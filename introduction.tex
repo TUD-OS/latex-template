@@ -1,0 +1,56 @@
+\chapter{Introduction}
+\label{sec:intro}
+\pagenumbering{arabic}
+
+% Die Einleitung schreibt man zuletzt, wenn die Arbeit im Großen und
+% Ganzen schon fertig ist. (Wenn man mit der Einleitung beginnt - ein
+% häufiger Fehler - braucht man viel länger und wirft sie später doch
+% wieder weg). Sie hat als wesentliche Aufgabe, den Kontext für die
+% unterschiedlichen Klassen von Lesern herzustellen. Man muß hier die
+% Leser für sich gewinnen. Das Problem, mit dem sich die Arbeit befaßt,
+% sollte am Ende wenigsten in Grundzügen klar sein und dem Leser
+% interessant erscheinen. Das Kapitel schließt mit einer Übersicht über
+% den Rest der Arbeit. Meist braucht man mindestens 4 Seiten dafür, mehr
+% als 10 Seiten liest keiner.
+
+\section{A Section}
+
+Referencing other chapters: \ref{sec:state} \ref{sec:design}
+\ref{sec:implementation} \ref{sec:evaluation} \ref{sec:futurework}
+\ref{sec:conclusion}
+
+\begin{table}[htp]
+  \centering
+  \begin{tabular}{lrr}
+    \bf Name & \bf Y & \bf Z \\
+    \hline
+    \it Foo & 20,614 & \unit[23]{\%} \\
+    \it Bar & 9,914 & \unit[11]{\%} \\
+    \it Foo + Bar & 30,528 & \unit[34]{\%} \\
+    \hline
+    \it total & 88,215 & \unit[100]{\%} \\
+
+  \end{tabular}
+  \caption[Some interesting numbers]{Various very important looking numbers and sums.}
+  \label{tab:numbers}
+\end{table}
+
+More text referencing Table~\ref{tab:numbers}.
+
+\section{Another Section}
+
+\begin{figure}[tbp]
+  \centering
+  \includegraphics[width=0.8\textwidth]{images/squirrel}
+  \caption[Short description]{A long description of this squirrel figure.}
+  \label{fig:squirrel}
+\end{figure}
+
+Citing \cite{bellard2005qfa} other documents \cite{bellard2005qfa, boileau06}
+and Figure~\ref{fig:squirrel}.
+
+\cleardoublepage
+
+%%% Local Variables:
+%%% TeX-master: "diplom"
+%%% End:

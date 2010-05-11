@@ -1,0 +1,28 @@
+http://www.ics.mq.edu.au/~rdale/resources/writingnotes/latexstyle.html#dashes
+
+* Dashes
+
+The single minus —the hyphen— appears within words; use the double
+minus — the en-dash — in number ranges; and use the treble dash, or
+em-dash, as in the previous clauses here.
+
+* Headings
+
+In section headings, capitalize all words except closed class words
+(i.e., prepositions, conjuctions, and so on).
+
+in subsection headings and below, only capitalize the first word and
+any proper names.
+
+* Structure
+
+Tell them what you're going to tell them, tell them it, then tell them
+you've told them it.
+
+* Footnotes
+
+Don't put a space before a \footnote command. Put the footnote after
+the punctuation mark it is next to, not before it.
+
+Make sure you include a full stop at the end of the footnote text. And
+make sure your footnotes are complete sentences.

@@ -1,0 +1,238 @@
+\documentclass[a4paper,abstract=true,twoside,liststotocpointlessnumbers,bibtotoc,BCOR1.5cm,headsepline,DIV12,appendixprefix,final]{scrreprt}
+
+\usepackage[ngerman,english]{babel}
+%\usepackage{lmodern}            % use lmodern fonts
+
+% This is the font I use for figures. Should I use it for everything?
+\usepackage[bitstream-charter]{mathdesign}
+\usepackage{berasans}
+
+% Font 2
+%% Use scalable, PostScript Type 1 versions of the Computer Modern fonts.
+%\usepackage{type1cm}
+
+%% Replace the standard Computer Modern Typewriter font LaTeX uses
+%% for monospace text with the PostScript font Adobe Courier.
+%\usepackage{courier}
+% End-of-Font 2
+
+\usepackage{textcomp}           % for \textmu (non-italic $\mu$)
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}   % can use native umlauts
+\setcounter{secnumdepth}{3}     % limit enumeration depth
+\setcounter{tocdepth}{1}        % limit TOC depth
+%\usepackage[it,bf,tight,hang,raggedright]{subfigure}
+\usepackage{varioref}           % nice refs
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{setspace}           % line spacing 
+\makeatletter
+\usepackage{array}
+\usepackage{fancybox}           % provide nice boxes
+\usepackage{units}              % unified way of setting values with units
+\usepackage[clearempty]{titlesec}
+\usepackage{listings}           % nice source code listings
+\lstset{frame=shadowbox, rulesepcolor=\color{blue}}
+
+\pagenumbering{Roman}
+
+\usepackage{fancyvrb}           % algorithm-boxes
+\usepackage{color}
+\usepackage{pdfpages}
+
+% remove "pagebackref" for the final version
+\usepackage[pdftex,
+citebordercolor={0.75 0.75 1},
+filebordercolor={0.75 0.75 1},
+linkbordercolor={0.75 0.75 1},
+% pagebordercolor={0.75 0.75 1},
+urlbordercolor={0.75 0.75 1},
+pdfborder={0.75 0.75 1},plainpages=false,pdfpagelabels=true]{hyperref}
+\hypersetup{%
+  pdftitle={Dein Titel},
+  pdfauthor={Otto Mustermann},
+  pdfkeywords={foo, bar},
+}
+
+\usepackage{hyphenat}
+% custom hyphenation
+%\hyphenation{cSCAN SCAN SSTF SATF FIFO in-te-res-siert}
+%\lefthyphenmin=3
+%\righthyphenmax=3
+
+% instead of sloppy
+%\tolerance 1414
+%\hbadness 1414
+\tolerance 2414
+\hbadness 2414
+\emergencystretch 1.5em
+\hfuzz 0.3pt
+\widowpenalty=10000     % Hurenkinder
+\clubpenalty=10000      % Schusterjungen
+\vfuzz \hfuzz
+\raggedbottom
+
+% use nice footnote indentation
+\deffootnote[1em]{1em}{1em}{\textsuperscript{\thefootnotemark}\,}
+
+%23.06.98
+%
+%Generelles zu den aux-Files und contents:
+%ein addcontentsline-Befehl schreibt eine Zeile in das aux-File,
+%welches am Ende des Latex-Laufes abgearbeitet wird und dann die
+%einzelnen Files, welche als 1.Argument fuer addcontentsline gegeben
+%wurden, erzeugt. Allerdings wird es nur ausgef"uhrt, wenn der
+%starttoc-Befehl gegeben wurde (aber am Ende des Laufes).
+%Der starttoc-Befehl wertet ausserdem das entsprechende File (toc, lof,..)
+%aus und benutzt dazu ein definiertes Makro, welches die Form
+%'l@<zweites Argument des addcontentsline-Befehls>' hat.
+
+%\newcounter{todocounter}
+
+%Hier erfolgt die Definition des Standard-Todo-Listen-names.
+%\newcommand{\listoftodoname}{Todo}
+
+\newcommand{\Todo}[1]{%
+%   \def\@tempc{\arabic{todocounter}}%
+%   \textbf{$\clubsuit$} \marginpar{\footnotesize \emph{#1}}%
+%   \addcontentsline{lod}
+%                   {todo}
+%                   {\protect \numberline{\ref{todo_label_\@tempc}}#1}%
+%   \label{todo_label_\@tempc}%
+%   \stepcounter{todocounter}%
+}
+
+\newcommand{\TodoLong}[2]{%
+%   \def\@tempc{\arabic{todocounter}}%
+%   \emph{#2} \marginpar{\footnotesize \emph{#1}}%
+%   \addcontentsline{lod}
+%                   {todo}
+%                   {\protect \numberline{\ref{todo_label_\@tempc}}#1}%
+%   \label{todo_label_\@tempc}%
+%   \stepcounter{todocounter}%
+}
+
+\newcommand{\MissingSource}[1]{%
+%  \TodoLong{Missing source: #1}{\textbf{$\clubsuit$}}%
+}
+
+%zunaechst wird getestet, ob chapters verfuegbar sind, dann wird ein solches
+%eingef"uhrt, sonst eine section
+%
+%mittels @namedef wird fuer starttoc eine Bezeichner definiert, der fuer
+%das Auslesen des Aux-files verwendet wird. Wird der Bezeichner hinter dem
+% '@' angetroffen (bei \addcontentsline das zweite Argument), so wird das
+%dahinter definierte genutzt. das zweite Argument bei \@dottedtocline
+%scheint den Abstand vor, das dritte den nach einer Kapitelzahl/Numerierung
+%anzugeben. Da die Todos nicht numeriert werden, ist es 0.
+\newcommand{\listoftodos}{%
+  \@ifundefined{chapter}{\def\@tempa{\section*}}%
+                        {\def\@tempa{\chapter*}}%
+  \@tempa{\listoftodoname}%
+  \@namedef{l@todo}{\@dottedtocline{1}{0em}{3.5em}}%
+  \@starttoc{lod}%
+}
+
+\newcommand{\asd}{%
+  \@ifstar{Sogar ein Stern ist vorhanden.}%
+          {Nein, es gibt keinen Stern}}
+
+%\usepackage{todo}
+
+\usepackage{xspace}
+% some common commands
+\newcommand{\drops}{\texorpdfstring{\textsc{Drops}\xspace}{DROPS}}
+\newcommand{\LLinux}{\texorpdfstring{L$\!^4$Linux}{L4Linux}}
+
+\newcommand{\NOVA}{NOVA\xspace}
+\newcommand{\QEMU}{QEMU\xspace}
+
+\date{30. April 2009}
+
+\makeatother
+\begin{document}
+%\listoftodos{}
+
+\begin{singlespace}
+
+\subject{{\LARGE Diplomarbeit}}
+
+\title{Dein Titel}
+
+\author{Otto Mustermann}
+
+\publishers{Technische Universität Dresden\\
+Fakultät Informatik\\
+Institut für Systemarchitektur\\
+Professur Betriebssysteme\\
+\begin{minipage}{\textwidth}%\\
+\vskip 6cm
+ {\normalsize }\begin{tabular}{ll}
+Betreuender Hochschullehrer: &
+Prof. Dr. rer. nat. Hermann Härtig\tabularnewline
+Betreuender Mitarbeiter:&
+Dipl.-Inf. Dein Betreuer\tabularnewline
+\end{tabular} {\normalsize }\end{minipage}}
+
+\maketitle
+\end{singlespace}
+\newpage
+
+\includepdf{images/diplom-aufgabe.pdf}
+\cleardoublepage
+
+\selectlanguage{ngerman}
+\section*{\vfill{} \thispagestyle{empty}
+Erklärung}
+
+Hiermit erkläre ich, dass ich diese Arbeit selbstständig erstellt
+und keine anderen als die angegebenen Hilfsmittel benutzt habe.
+\bigskip{}
+
+\noindent Dresden, den \today % 30. April 2009
+\vspace{2.5cm}
+
+\noindent Otto Mustermann \cleardoublepage{}
+
+\selectlanguage{english}
+
+\begin{abstract}
+\input{abstract.tex}
+\end{abstract}
+
+\cleardoublepage
+
+\tableofcontents{}
+
+\listoftables
+\listoffigures
+
+\newpage
+% \begin{center}
+%   This page is intentionally left blank.
+% \end{center}
+% Force LaTeX to really emit an empty page.
+\vspace*{1em} 
+\cleardoublepage
+
+%\doublespacing
+\input{introduction.tex}
+\input{state.tex}
+\input{design.tex}
+\input{implementation.tex}
+\input{evaluation.tex}
+\input{futurework.tex}
+\input{conclusion.tex}
+
+\appendix
+
+%\addchap{Glossar}
+
+% makeglossaries diplom
+%\printglossary[style=altlist]
+%\printglossary[type=\acronymtype,style=long]
+
+\bibliographystyle{plain}
+\bibliography{own}
+
+\end{document}
