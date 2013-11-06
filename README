@@ -6,6 +6,7 @@ Diplomarbeit mit zugehöriger Make-Datei zur Verfügung.
 
 Kommentare und Verbesserungen an:
 Julian Stecklina <jsteckli@os.inf.tu-dresden.de>
+Martin Unzner <munzner@os.inf.tu-dresden.de>
 
 So geht's los
 ==============
@@ -64,7 +65,7 @@ einige Hintergrundinformationen.
   abbreviation BASIC\@.  Next sentence.")
 - wrong µ symbol, use \textmu for non-italic µ in continous text
 - in American English, listings with at least three elements have a
-  comma before the last and/or: "Set A contains elements a, b, and c." 
+  comma before the last and/or: "Set A contains elements a, b, and c."
   -> BIW
 - more stylistic information can be found in 'Bugs in writing' (BIW)
   by Lyn Dupré

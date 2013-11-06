@@ -16,6 +16,10 @@
 %\usepackage{courier}
 % End-of-Font 2
 
+% BibLaTeX instead of BibTeX
+\usepackage[style=alphabetic]{biblatex}
+\addbibresource{own.bib}
+
 \usepackage{textcomp}           % for \textmu (non-italic $\mu$)
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}   % can use native umlauts
@@ -232,7 +236,6 @@ und keine anderen als die angegebenen Hilfsmittel benutzt habe.
 %\printglossary[style=altlist]
 %\printglossary[type=\acronymtype,style=long]
 
-\bibliographystyle{plain}
-\bibliography{own}
+\printbibliography
 
 \end{document}

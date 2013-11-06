@@ -1,6 +1,8 @@
 ######################################################################
 # This Makefile is part of a skeleton (diploma) thesis.  If you have
-# useful additions or suggestions, please fell free to contact me:
+# useful additions or suggestions, please feel free to contact me:
+# Martin Unzner <munzner@os.inf.tu-dresden.de>
+# or alternatively
 # Julian Stecklina <jsteckli@os.inf.tu-dresden.de>
 ######################################################################
 
@@ -21,6 +23,7 @@ DOC_IMG_PDF = images/diplom-aufgabe.pdf
 
 # latex stuff
 PDFLATEX    ?= pdflatex
+BIBER       ?= biber
 CHECKBIW    ?= checkbiw/src/checkbiw
 
 ######################################################################
@@ -31,7 +34,7 @@ DOC_PDF		= $(DOC_TEX:.tex=.pdf)
 DOC_BASE	= $(DOC_TEX:.tex=)
 
 DOC_CLEAN = $(DOC_PDF)									\
-            $(DOC_BASE).{aux,log,toc,bbl,blg,ltf,brf,out,lof,nav,snm,acn,glo,ist,lot}	\
+            $(DOC_BASE).{aux,log,toc,bcf,bbl,blg,ltf,brf,out,lof,nav,snm,acn,glo,ist,lot,run.xml}	\
             *~
 
 VERBOSE = @
@@ -46,8 +49,8 @@ $(DOC_PDF): $(DOC_TEX) $(DOC_TEX_ADD) $(DOC_BIB) $(DOC_IMG_JPG)		\
 	    ((grep 'TeX capacity exceeded' $(DOC_PDF:.pdf=.log) && \
 	   echo -e "\n\033[31mIncrease pool_size to 200000 in" \
 	           "/etc/texmf/texmf.cnf!\033[m\n" && false) || false)
-	$(VERBOSE)grep '\citation' $(DOC_PDF:.pdf=.aux) && \
-	  bibtex $(basename $(DOC_PDF)) || true
+	$(VERBOSE)[ -f $(DOC_BASE).bcf ] && \
+	  $(BIBER) $(DOC_BASE).bcf
 	$(VERBOSE)(export size=1 ; touch $(DOC_PDF);\
 	  until [ $$size -eq `ls -o $(DOC_PDF) | awk '{print $$4}'` ]; do\
 	    export size=`ls -o $(DOC_PDF) | awk '{print $$4}'` ;\
