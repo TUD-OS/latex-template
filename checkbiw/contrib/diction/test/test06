@@ -1,0 +1,29 @@
+#!/bin/sh
+
+echo -n $0: 'Recovery... '
+
+cat >test.in <<eof
+Checking for match directly after another match -- flip-flap.
+eof
+
+cat >test.db <<eof
+ flip-~	flip prefix
+ flap	flap alarm
+eof
+
+cat >test.ref <<eof
+test.in:1: Checking for match directly after another match -- [flip- -> flip prefix][flap -> flap alarm].
+
+2 phrases in 1 sentence found.
+eof
+
+sh ./test/rundiction -f test.db test.in >test.data
+
+if cmp test.ref test.data
+then
+  rm -f test.*
+  echo passed
+else
+  echo failed
+  exit 1
+fi

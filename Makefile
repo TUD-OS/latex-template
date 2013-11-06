@@ -21,6 +21,7 @@ DOC_IMG_PDF = images/diplom-aufgabe.pdf
 
 # latex stuff
 PDFLATEX    ?= pdflatex
+CHECKBIW    ?= checkbiw/src/checkbiw
 
 ######################################################################
 # You should not need to adapt stuff below this line ...
@@ -35,7 +36,7 @@ DOC_CLEAN = $(DOC_PDF)									\
 
 VERBOSE = @
 
-.PHONY: pdf clean
+.PHONY: pdf clean checkbiw check-french-spacing
 
 default: pdf
 
@@ -59,5 +60,18 @@ pdf: $(DOC_PDF)
 
 clean:
 	rm -f $(DOC_CLEAN)
+
+# Points out abbreviations and reminds you of escaping
+# the space after the period
+check-french-spacing:
+	$(VERBOSE)export GREP_COLOR='1;32'; \
+	export GREP_OPTIONS='--color=auto'; \
+	grep "[A-Z]\{2,\}\." $(DOC_TEX) $(DOC_TEX_ADD) || \
+	grep -e 'e\.g\.' -e 'i\.e\.' -e 'd\.h\.' $(DOC_TEX) $(DOC_TEX_ADD) || \
+	true
+
+# check for conformance with "bugs in writing", english only
+checkbiw:
+	$(VERBOSE)$(CHECKBIW) -v -c -d emdash $(DOC_TEX) $(DOC_TEX_ADD)
 
 # EOF

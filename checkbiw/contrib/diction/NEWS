@@ -1,0 +1,10 @@
+The following things have been changed compared to version 1.02:
+
+o  makefile bug fixed
+o  No default prefix of /usr on Linux (confuses packaging systems
+   when updating diction from source and a package was installed
+   before)
+o  Migration from catgets to GNU gettext inspired by patches from
+   Jochen Hein
+o  Diction loads phrase file for current locale by default, switching
+   to locale C if there is no phrase file

@@ -1,0 +1,331 @@
+ as to whether	whether §50
+ different than	different from §61
+ is due to	stems from, originates in, is caused by (do not use for origination) {warning} §39
+ above	preceding, previous (when referring to text) {warning} §48
+ below	next, following (when referring to text) {warning} §48
+ last	preceding, previous; final, closing, concluding ("last" is ambiguous) §87
+ all of	all, every (unless only "all of" makes sense) {warning} §108
+ i'm	I am §32
+ you're	you are §32
+ he's	he is §32
+ she's	she is §32
+ it's	it is §32
+ we're	we are §32
+ they're	they are §32
+ i've	I have §32
+ you've	you have §32
+ we've	we have §32
+ they've	they have §32
+ ain't	am not, are not, is not, have not, has not, do not, does not, did not §32
+ aren't 	are not §32
+ isn't 	is not §32
+ haven't	have not §32
+ hasn't	has not §32
+ let's	let us §32
+ ok	(avoid in formal writing) §32
+ tho	= though
+ thru	through
+ hw	hardware
+ is comprised of	comprises §75
+ work-around	workaround
+ work around	!
+ works around	!
+ worked around	!
+ around	approximately, more or less, roughly, about (when not referring to surroundings) {warning} §90
+ best-effort	!
+ effort	(avoid, only applies to physical activity) §16
+ equals	is equal to §57
+ impact	influence, effect (noun); affect (verb) §25
+ impacts	affects §25
+ issue	(use more precise term such as:) problem, need, requirement §111
+ the reason is because	because, the reason is, the reason why §55
+ the fact that	that §66
+ as though	!
+ even though	!
+ though.	nevertheless, however, on the other hand, at last (move to beginning of sentence)
+ though	although, even though, albeit, notwithstanding §52
+ utilize	use (except when using something underutilized) {warning} §109
+ utilizes	uses (except when using something underutilized) {warning} §109
+ utilizing	using (except when using something underutilized) {warning} §109
+ utilized	used (except when using something underutilized) {warning} §109
+ utilise	use (except when using something underutilized) {warning} §109
+ utilises	uses (except when using something underutilized) {warning} §109
+ utilising	using (except when using something underutilized) {warning} §109
+ utilised	used (except when using something underutilized) {warning} §109
+, that is	!
+,'' that is	!
+ however, that	!
+, that	which (or remove comma if "that" clause specifies object(s)) §17
+,'' that	which (or remove comma if "that" clause specifies object(s)) §17
+, which	!
+,'' which	!
+ (which	!
+ about which	!
+ after which	!
+ against which	!
+ at which	!
+ between which	!
+ by which	!
+ during which	!
+ for which	!
+ following which	!
+ from which	!
+ in which	!
+ into which	!
+ of which	!
+ on which	!
+ over which	!
+ through which	!
+ to which	!
+ under which	!
+ upon which	!
+ with which	!
+ without which	!
+ which	that (or add comma if "which" clause does not specify object(s)) §17
+ after.	(dangling preposition, recast using "after which") {warning} §60
+ against.	(dangling preposition, recast using "against which") {warning} §60
+ at.	(dangling preposition, recast using "at which") {warning} §60
+ between.	(dangling preposition, recast using "between which") {warning} §60
+ for.	(dangling preposition, recast using "for which") {warning} §60
+ from.	(dangling preposition, recast using "from which") {warning} §60
+ in.	(dangling preposition, recast using "in which") {warning} §60
+ into.	(dangling preposition, recast using "into which") {warning} §60
+ of.	(dangling preposition, recast using "of which") {warning} §60
+ on.	(dangling preposition, recast using "on which") {warning} §60
+ over.	(dangling preposition, recast using "over which") {warning} §60
+ through.	(dangling preposition, recast using "through which") {warning} §60
+ to.	(dangling preposition, recast using "to which") {warning} §60
+ under.	(dangling preposition, recast using "under which") {warning} §60
+ with.	(dangling preposition, recast using "with which") {warning} §60
+ without.	(dangling preposition, recast using "without which") {warning} §60
+ milli	milli... ("milli" is a prefix, remove space or hyphen after it)
+ milli-~	= milli
+ µ-kernel	microkernel ("µ-kernel" is pronounced as "müh-kernel")
+ \micro-kernel	= µ-kernel
+ \micro	!
+ micro kernel	microkernel
+ micro-kernel	microkernel
+ micro	micro... ("micro" is a prefix, remove space or hyphen after it)
+ micro-~	= micro
+ nano	nano... ("nano" is a prefix, remove space or hyphen after it)
+ nano-~	= nano
+ pico	pico... ("pico" is a prefix, remove space or hyphen after it)
+ pico-~	= pico
+ kilo	kilo... ("kilo" is a prefix, remove space or hyphen after it)
+ kilo-~	= kilo
+ mega	mega... ("mega" is a prefix, remove space or hyphen after it)
+ mega-~	= mega
+ giga	giga... ("giga" is a prefix, remove space or hyphen after it)
+ giga-~	= giga
+ (i.e.,	!
+ (i. e.,	!
+ (i.\,e.,	!
+ (\ie{},	!
+ (\ie,	!
+ (i.e.	(add comma after "i. e.") §21
+ (i. e.	= (i.e.
+ (i.\,e.	= (i.e.
+ (\ie{}	= (i.e.
+ (\ie	= (i.e.
+ i.e.	that is (if not in parentheses) §21
+ i. e.	= i.e.
+ i.\,e.	= i.e.
+ \ie{}	= i.e.
+ \ie	= i.e.
+ (e.g.,	!
+ (e. g.,	!
+ (e.\,g.,	!
+ (\eg{},	!
+ (\eg,	!
+ (e.g.	(add comma after "e. g.") §21
+ (e. g.	= (e.g.
+ (e.\,g.	= (e.g.
+ (\eg{}	= (e.g.
+ (\eg	= (e.g.
+ e.g.	for example, for instance (if not in parentheses) §21
+ e. g.	= e.g.
+ e.\,g.	= e.g.
+ \eg{}	= e.g.
+ \eg	= e.g.
+ etc.)	!
+ etc.	and so on (if not in parentheses) §21
+ et al.)	!
+ et al.	and colleagues/associates/coworkers (if not in parentheses) {warning} §21
+ et al	et al., and colleagues/associates/coworkers (if not in parentheses) §21
+ et. al	= et al
+ et.\,al	= et al
+ et.al	= et al
+ et.al.	= et al
+ both,	(remove comma after "both") {warning}
+ since	because (use "since" only for relationships in time, not for causal relationships) {warning} §102
+ either, because	!
+ either, since	either, because (use "since" only for relationships in time, not for causal relationships) §102
+ either, as	!
+ either,	(remove comma after "either") {warning}
+ can not	cannot (in most cases) {warning} §104
+ non-real-time	!
+ non-~	(nonwords contain no hyphen, except for compound words or names) {warning} §106
+ re-sent	!
+ re-~	(rewords contain no hyphen) §134
+;''	''; (except for verbatim strings) {warning} §35
+ I/O	input--output §117, §32
+ input/output	input--output §117
+ input-output	input--output §117
+ and/or	and §117
+ note,	(remove comma after "note") §114
+ Section \ref	!
+# Section~\ref	!
+ Section [~	!
+ section \ref	Section §62
+# section~\ref	Section §62
+ section [~	Section §62
+ Figure \ref	!
+# Figure~\ref	!
+ Figure [~	!
+ figure \ref	Figure §62
+# figure~\ref	Figure §62
+ figure [~	Figure §62
+ Table \ref	!
+# Table~\ref	!
+ Table [~	!
+ table \ref	Table §62
+# table~\ref	Table §62
+ table [~	Table §62
+ Chapter \ref	!
+# Chapter~\ref	!
+ Chapter [~	!
+ chapter \ref	Chapter §62
+# chapter~\ref	Chapter §62
+ chapter [~	Chapter §62
+ Part \ref	!
+# Part~\ref	!
+ Part [~	!
+ part \ref	Part §62
+# part~\ref	Part §62
+ part [~	Part §62
+ firstly	first
+ secondly	second
+. however,	!
+.'' however,	!
+. however	However, (add comma when meaning "nevertheless", "on the other hand") {warning}
+.'' however	However, (add comma when meaning "nevertheless", "on the other hand") {warning}
+. therefore,	!
+.'' therefore,	!
+. therefore	Therefore, (add comma)
+.'' therefore	Therefore, (add comma)
+. also,	Moreover, Additionally, (keep comma)
+.'' also,	Moreover, Additionally, (keep comma)
+. also	Moreover, Additionally, (add comma)
+.'' also	Moreover, Additionally, (add comma)
+. moreover,	!
+.'' moreover,	!
+. moreover	Moreover, (add comma)
+.'' moreover	Moreover, (add comma)
+. additionally,	!
+.'' additionally,	!
+. additionally	Additionally, (add comma)
+.'' additionally	Additionally, (add comma)
+ CPU	!
+ cpu	CPU
+ algas	algae §89
+ appendixes	appendices §89
+ alumnuses	alumni §89
+ automatons	automata §89
+ axises	axes §89
+ curriculums	curricula §89
+ datas	data §89
+ ellipsises	ellipses §89
+ erratums	errata §89
+ formulas	formulae §89
+ indexes	indices (use "indexes" only for look-up tables) {warning} §89
+ matrixes	matrices §89
+ mediums	media §89
+ memorandums	memoranda §89
+ nucleuses	nuclei §89
+ radiuses	radii §89
+ schemas	schemata §89
+ symposiums	symposia §89
+ thesauruses	thesauri §89
+ vertexes	vertices §89
+ vitas	vitae §89
+ analysises	analyses §89
+ antithesises	antitheses §89
+ crisises	crises §89
+ parenthesises 	parentheses §89
+ synopsises	synopses §89
+ synthesises	syntheses §89
+ thesises	theses §89
+ echos	echoes §89
+ fiascos	fiascoes §89
+ logoes	logos §89
+ zeroes	zeros §89
+ falling outs	fallings out §89
+ passerbys	passersby §89
+ runner ups	runners up §89
+ adress	address
+ adresses	addresses
+ ressource	resource
+ ressources	resources
+ one can	you can, we can §2
+ one has	I have, we have §2
+ one should	you should §2
+ the author	I §2
+ the authors	we (or if it's not you, name authors) §2
+ the reader	you §2
+ this is	(undefined this, add noun after "this") §8
+ these are	(undefined this, add noun after "these") §8
+ this means that	thus, this assertion implies §8
+ in order to	to, so as to §76
+ will likely be	probably will be §100
+ some	(fuzzy; which ones/how many do you mean?) §36
+ thing	(fuzzy; name entity under discussion) §36
+ very	(fuzzy; omit, or use stronger adverb/adjective:) exceptionally, extremely, noticeably §36
+ a lot of	(avoid in formal writing; use more expressive term) §36
+ actually	(avoid for stressing; use only when emphasizing actual versus virtual) §36
+ in fact	= actually
+ truly	= actually
+ really	= actually
+ center on	(avoid; choose verb conveying precise description of what is done) §40
+ centers on	= center on
+ centered on	= center on
+ focus on	= center on
+ focuses on	= center on
+ focused on	= center on
+ concentrate on	= center on
+ concentrates on	= center on
+ concentrated on	= center on
+ as good or better than	as good as OBJECT, or better/if not better
+ in many cases	("cases" is often fuzzy/redundant; omit, name circumstances) {warning}
+ been the case that	(remove this phrase and recast sentence)
+ certainly	(fuzzy; omit)
+ character	(often redundant; omit) {warning}
+ nature	(often redundant; omit) {warning}
+ factor out	!
+ factor	(often redundant; omit) {warning}
+ clever	(avoid in formal writing)
+ respective	(often redundant; omit) {warning}
+ respectively	(often redundant; omit) {warning}
+ a kind	!
+ the kind	!
+ this kind	!
+ that kind	!
+ one kind	!
+ kind of	(unless meaning "type":) rather (before adjective/verb), something like (before noun) {warning}
+ sort of	= kind of
+ oftentimes	often
+ ofttimes	often
+ viewpoint	opinion, view; (in geometric sense:) point of view
+. while	although, whereas (unless "while" means "at the same time") {warning}
+.'' while	=. while
+, while	=. while
+,'' while	=. while
+ worth while	(avoid in formal writing)
+ worthwhile	(avoid in formal writing)
+#Local Variables:
+#mode:fundamental
+#mode:flyspell
+#tab-width:20
+#ispell-local-dictionary: "american"
+#comment-start: ";"
+#comment-start-skip: "; *"
+#End:

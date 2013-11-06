@@ -1,0 +1,211 @@
+'',	,'' (except for verbatim strings) {warning} §35
+''.	.'' (except for verbatim strings) {warning} §35
+ acknowledgement	acknowledgment §250
+ afterwards	afterward §250
+ backwards	backward §250
+ cancelling	canceling §250
+ catalogue	catalog §250
+ centre	center §250
+ cheque	check §250
+ colour	color §250
+ dialogue	dialog §250
+ favour	favor §250
+ flavour	flavor §250
+# forwards	forward §250
+ forwards-~	forward- §250
+ grey	gray §250
+ judgement	judgment §250
+ labour	labor §250
+ modelling	modeling §250
+ modelled	modeled §250
+ theatre	theater §250
+ towards	toward §250
+ travelling	traveling §250
+ disc	disk
+ discs	disks
+ analyse	analyze
+ analyses	analyzes (except as plural of analysis) {warning}
+ analysing	analyzing
+ analysed	analyzed
+ optimise	optimize
+ optimises	optimizes
+ optimising	optimizing
+ optimisation	optimization
+ optimised	optimized
+ penalise	penalize
+ penalises	penalizes
+ penalising	penalizing
+ penalisation	penalization
+ penalised	penalized
+ itemise	itemize
+ itemises	itemizes
+ itemising	itemizing
+ itemisation	itemization
+ itemised	itemized
+ minimise	minimize
+ minimises	minimizes
+ minimising	minimizing
+ minimisation	minimization
+ minimised	minimized
+ maximise	maximize
+ maximises	maximizes
+ maximising	maximizing
+ maximisation	maximization
+ maximised	maximized
+ localise	localize
+ localises	localizes
+ localising	localizing
+ localisation	localization
+ localised	localized
+ stabilise	stabilize
+ stabilises	stabilizes
+ stabilising	stabilizing
+ stabilisation	stabilization
+ stabilised	stabilized
+ normalise	normalize
+ normalises	normalizes
+ normalising	normalizing
+ normalisation	normalization
+ normalised	normalized
+ generalise	generalize
+ generalises	generalizes
+ generalising	generalizing
+ generalisation	generalization
+ generalised	generalized
+ specialise	specialize
+ specialises	specializes
+ specialising	specializing
+ specialisation	specialization
+ specialised	specialized
+ customise	customize
+ customises	customizes
+ customising	customizing
+ customisation	customization
+ customised	customized
+ organise	organize
+ organises	organizes
+ organising	organizing
+ organisation	organization
+ organised	organized
+ organiser	organizer
+ externalise	externalize
+ externalises	externalizes
+ externalising	externalizing
+ externalisation	externalization
+ externalised	externalized
+ synchronise	synchronize
+ synchronises	synchronizes
+ synchronising	synchronizing
+ synchronisation	synchronization
+ synchronised	synchronized
+ characterise	characterize
+ characterises	characterizes
+ characterising	characterizing
+ characterisation	characterization
+ characterised	characterized
+ serialise	serialize
+ serialises	serializes
+ serialising	serializing
+ serialisation	serialization
+ serialised	serialized
+ serialiser	serializer
+ prioritise	prioritize
+ prioritises	prioritizes
+ prioritising	prioritizing
+ prioritisation	prioritization
+ prioritised	prioritized
+ criticise	criticize
+ criticises	criticizes
+ criticising	criticizing
+ criticised	criticized
+ initialise	initialize
+ initialises	initializes
+ initialising	initializing
+ initialisation	initialization
+ initialised	initialized
+ initialiser	initializer
+ realise	realize
+ realises	realizes
+ realising	realizing
+ realisation	realization
+ realised	realized
+ formalise	formalize
+ formalises	formalizes
+ formalising	formalizing
+ formalisation	formalization
+ formalised	formalized
+ idealise	idealize
+ idealises	idealizes
+ idealising	idealizing
+ idealisation	idealization
+ idealised	idealized
+ authorise	authorize
+ authorises	authorizes
+ authorising	authorizing
+ authorisation	authorization
+ authorised	authorized
+ unauthorise	unauthorize
+ unauthorises	unauthorizes
+ unauthorising	unauthorizing
+ unauthorised	unauthorized
+ quantise	quantize
+ quantises	quantizes
+ quantising	quantizing
+ quantisation	quantization
+ quantised	quantized
+ capitalise	capitalize
+ capitalises	capitalizes
+ capitalising	capitalizing
+ capitalisation	capitalization
+ capitalised	capitalized
+ summarise	summarize
+ summarises	summarizes
+ summarising	summarizing
+ summarisation	summarization
+ summarised	summarized
+ monopolise	monopolize
+ monopolises	monopolizes
+ monopolising	monopolizing
+ monopolisation	monopolization
+ monopolised	monopolized
+ virtualise	virtualize
+ virtualises	virtualizes
+ virtualising	virtualizing
+ virtualisation	virtualization
+ virtualised	virtualized
+ categorise	categorize
+ categorises	categorizes
+ categorising	categorizing
+ categorisation	categorization
+ categorised	categorized
+ centralise	centralize
+ centralises	centralizes
+ centralising	centralizing
+ centralisation	centralization
+ centralised	centralized
+ utilise	utilize
+ utilises	utilizes
+ utilising	utilizing
+ utilisation	utilization
+ utilised	utilized
+ kernelise	kernelize
+ kernelises	kernelizes
+ kernelising	kernelizing
+ kernelisation	kernelization
+ kernelised	kernelized
+ recognise	recognize
+ recognises	recognizes
+ recognising	recognizing
+ recognised	recognized
+ emphasise	emphasize
+ emphasises	emphasizes
+ emphasising	emphasizing
+ emphasised	emphasized
+#Local Variables:
+#mode:fundamental
+#mode:flyspell
+#tab-width:20
+#ispell-local-dictionary: "american"
+#comment-start: ";"
+#comment-start-skip: "; *"
+#End:

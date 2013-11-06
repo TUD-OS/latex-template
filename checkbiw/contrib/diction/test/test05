@@ -1,0 +1,28 @@
+#!/bin/sh
+
+echo -n $0: 'Stemming... '
+
+cat >test.in <<eof
+Checking for word stems -- frobnification.
+eof
+
+cat >test.db <<eof
+ frob~	frob is evil
+eof
+
+cat >test.ref <<eof
+test.in:1: Checking for word stems -- [frob -> frob is evil]nification.
+
+1 phrase in 1 sentence found.
+eof
+
+sh ./test/rundiction -f test.db test.in >test.data
+
+if cmp test.ref test.data
+then
+  rm -f test.*
+  echo passed
+else
+  echo failed
+  exit 1
+fi

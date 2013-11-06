@@ -1,0 +1,170 @@
+ checkbiw(1) - Checks your prose's conformance to the "BUGS in
+ Writing" style guide
+
+ Michael Hohmuth
+
+Synopsis
+########
+
+checkbiw [ -hnvc ] [ -iad _ruleset ..._ ] _files ..._
+
+Description
+###########
+
+The checkbiw tool finds and flags stylistic errors in English
+documents.  Checkbiw comes with a number of style rule sets that were
+derived from Lyn Dupré's book ``BUGS in Writing---A Guide to Debugging
+your prose.''  
+
+To adapt checkbiw to your needs, you can remove and add standard or
+custom rule sets.
+
+Checkbiw outputs error information in a format typical for compilers,
+allowing users of editors like Emacs to easily navigate to the error
+location.  Output is written to stdout.
+
+Checkbiw reads input from the files supplied on the command line.  A
+file name of '-' denotes stdin.
+
+Options
+=======
+
+Checkbiw reads options from $HOME/.checkbiwrc, from ./.checkbiwrc, and
+from the command line, in that order.  It processes options from left
+to right; later options can undo the effect of earlier ones.
+
+:-n: Clear current list of rule sets.  Also removes all standard rule
+  sets
+
+:-v: Print the list of enabled rule sets after all option processing.
+
+:-h: Prints a short help texts and exits.
+
+:-c: Use colors for highlighting the output.
+
+:-a _ruleset_: Add rule set at the end of the set list.  Before adding
+  the set, removes set of same type from the list (see next paragraph)
+
+:-i _ruleset_: Inserts rule set at the beginning of the list.  Before adding
+  the set, removes set of same type from the list (see next
+  paragraph)
+
+:-d _rulesettype_: Deletes rule set of given type from the rule-set
+  list (see next paragraph)
+
+The -a, -i, and -d options remove rule sets according to their
+``type,'' which is equivalent to the name of the rule set up to the
+first '-' character.  For example:
+
+* Option "-d lang" removes any of the rule sets "lang", "lang-american",
+  "lang-whatever" 
+* Option "-a emdash-space" first removes "emdash-nospace"
+
+Standard rule sets
+==================
+
+Checkbiw comes with the following standard rule sets.  Rule sets
+enabled by default are shown with an asterisk (*).
+
+:* biw: The BUGS in Writing rule set; contains common style errors.
+
+:* lang-american: The American-English rule set; contains British
+  English misspellings
+
+:* cite-space: Checks for space characters before citations indicated
+  using 'cite' or square brackets []
+
+:* emdash-nospace: Enforces that no space characters are set before or
+  after an em-dash '---'
+
+:emdash-space: Enforces that space characters _are set_ before or
+  after an em-dash '---'.
+
+:passive: Checks for passive-voice construction.  This rule set is
+  disabled by default because it produces a significant number of
+  false positives, but it can be extremely useful.
+
+Writing custom rule sets
+========================
+
+You can write your own rule-set files and add them using the '-i' and
+'-a' options.  Custom rule sets are especially useful for removing
+false positives from checkbiw's output; I give an example for this use
+at the end of this section.
+
+Rule sets are defined in an extended diction(1) format.  Rule-set
+files contain one rule per line.  Each line has two parts separated by
+a tabulator character: The first part is the ``bad phrase,'' the
+second is the advice.  
+
+If the bad phrase starts with a space character, the rest of the
+phrase matches only after nonalphabetic characters (i.e., after
+whitespace and punctuation).  If the bad phrase _does not_ end with a
+tilde character '~', the phrase matches only before nonalphabetic
+characters.  Otherwise, the phrase match does not depend on
+neighboring characters.
+
+An empty advice or an advice starting with "!"  marks a phrase
+checkbiw should ignore; this feature is useful for avoiding false
+positives.
+
+For example:
+
+! as though......!
+! even though....!
+! though.........although, even though
+
+(In this example, I used dots to denote one tab character.)
+
+Environment
+###########
+
+:$CHECKBIWPATH:
+  Colon-separated list of directories in which checkbiw searches for
+  rule-set files.  Before searching these directories, checkbiw always
+  checks the current directory; after checking $CHECKBIWPATH, checkbiw
+  looks into the system directory {instprefix}/share/checkbiw/.
+  
+:$DICTIONPATH:
+  Colon-separated list of directories in which checkbiw searches for
+  the GNU diction binary.  Defaults to {instprefix}/bin.  If checkbiw
+  cannot find in one of these directories, it additionally
+  searches the ones in $PATH.
+
+:$HOME:
+  User's home directory, used to find user-configuration file
+
+Files
+#####
+
+:$HOME/.checkbiwrc:
+  User configuration.  Checkbiw reads options from this file first.
+
+:./.checkbiwrc:
+  Directory configuration.  Checkbiw processes options from this file
+  after reading $HOME/.checkbiwrc, but before it proceeds to the
+  command line.
+
+:{instprefix}/share/checkbiw/*:
+  Standard rule-set files
+
+See also
+########
+
+diction(1), bugsinwriting(7)
+
+Michael Hohmuth: "The tech-paper writer's ultimate BUGS in Writing
+must-read list".  File doc/mustread.pdf; hardcopy version of
+bugsinwriting(7).
+
+Lyn Dupré: "BUGS in Writing---A Guide to Debugging Your Prose".
+Addison--Wesley 1998
+
+;Local Variables:
+;mode:flyspell
+;ispell-local-dictionary: "american"
+;comment-start: ";"
+;comment-start-skip: "; *"
+;End:
+
+; LocalWords:  Hohmuth checkbiw

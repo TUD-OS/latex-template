@@ -1,0 +1,22 @@
+#!/bin/sh
+
+echo -n $0: 'Two regular sentences... '
+
+cat >test.in <<eof
+This is the first sentence.  This is the second one.
+eof
+
+cat >test.ref <<eof
+No phrases in 2 sentences found.
+eof
+
+sh ./test/rundiction test.in >test.data
+
+if cmp test.ref test.data
+then
+  rm -f test.*
+  echo passed
+else
+  echo failed
+  exit 1
+fi

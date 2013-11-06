@@ -1,0 +1,356 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2004-03-10 16:55+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: diction.c:79 diction.c:366
+#, c-format
+msgid "diction: Opening `%s' failed (%s).\n"
+msgstr ""
+
+#: diction.c:94 diction.c:106 diction.c:124
+msgid "diction: out of memory.\n"
+msgstr ""
+
+#: diction.c:116
+#, c-format
+msgid "diction: Compiling regular expression `%s' failed (%s).\n"
+msgstr ""
+
+#: diction.c:233
+msgid "Double word."
+msgstr ""
+
+#: diction.c:255
+msgid ""
+"Usage: diction [-d] [-f file [-n|-L language]] [file ...]\n"
+"       diction [--ignore-double-words]\n"
+"               [--file file [--no-default-file|--language]] [file ...]\n"
+"       diction --version\n"
+msgstr ""
+
+#: diction.c:294
+#, c-format
+msgid "diction: Invalid string `..' in default phrase language `%s'.\n"
+msgstr ""
+
+#: diction.c:335
+msgid "Try `diction -h' or `diction --help' for more information.\n"
+msgstr ""
+
+#: diction.c:342
+msgid ""
+"Print wordy and commonly misused phrases in sentences.\n"
+"\n"
+"-d, --ignore-double-words  do not complain about double words\n"
+"-f, --file                 also read the specified database\n"
+"-n, --no-default-file      do not read the default phrase file\n"
+"-L, --language             set document language\n"
+"-h, --help                 print this message\n"
+"    --version              print the version\n"
+msgstr ""
+
+#: diction.c:351 style.c:892
+msgid "Report bugs to <michael@moria.de>.\n"
+msgstr ""
+
+#: diction.c:377 style.c:912
+msgid "No sentences found.\n"
+msgstr ""
+
+#: diction.c:381
+msgid "No phrases "
+msgstr ""
+
+#: diction.c:382
+msgid "1 phrase "
+msgstr ""
+
+#: diction.c:383
+#, c-format
+msgid "%d phrases "
+msgstr ""
+
+#: diction.c:384
+msgid "in 1 sentence found.\n"
+msgstr ""
+
+#: diction.c:385
+#, c-format
+msgid "in %d sentences found.\n"
+msgstr ""
+
+#: getopt.c:679
+#, c-format
+msgid "%s: option `%s' is ambiguous\n"
+msgstr ""
+
+#: getopt.c:703
+#, c-format
+msgid "%s: option `--%s' doesn't allow an argument\n"
+msgstr ""
+
+#: getopt.c:708
+#, c-format
+msgid "%s: option `%c%s' doesn't allow an argument\n"
+msgstr ""
+
+#: getopt.c:725 getopt.c:898
+#, c-format
+msgid "%s: option `%s' requires an argument\n"
+msgstr ""
+
+#. --option
+#: getopt.c:754
+#, c-format
+msgid "%s: unrecognized option `--%s'\n"
+msgstr ""
+
+#. +option or -option
+#: getopt.c:758
+#, c-format
+msgid "%s: unrecognized option `%c%s'\n"
+msgstr ""
+
+#. 1003.2 specifies the format of this message.
+#: getopt.c:784
+#, c-format
+msgid "%s: illegal option -- %c\n"
+msgstr ""
+
+#: getopt.c:787
+#, c-format
+msgid "%s: invalid option -- %c\n"
+msgstr ""
+
+#. 1003.2 specifies the format of this message.
+#: getopt.c:817 getopt.c:947
+#, c-format
+msgid "%s: option requires an argument -- %c\n"
+msgstr ""
+
+#: getopt.c:864
+#, c-format
+msgid "%s: option `-W %s' is ambiguous\n"
+msgstr ""
+
+#: getopt.c:882
+#, c-format
+msgid "%s: option `-W %s' doesn't allow an argument\n"
+msgstr ""
+
+#: sentence.c:177
+#, c-format
+msgid "%s: internal error, compiling a regular expression failed (%s).\n"
+msgstr ""
+
+#: sentence.c:214
+#, c-format
+msgid "%s: increasing sentence buffer failed: %s\n"
+msgstr ""
+
+#: style.c:71 style.c:85
+msgid "style: out of memory\n"
+msgstr ""
+
+#: style.c:783
+msgid ""
+"Usage: style [-L language] [-l length] [-r ari] [file ...]\n"
+"       style [--language language] [--print-long length] [--print-ari ari]\n"
+"             [file ...]\n"
+"       style --version\n"
+msgstr ""
+
+#: style.c:872
+msgid "Try style -h|--help for more information.\n"
+msgstr ""
+
+#: style.c:879
+msgid ""
+"Analyse surface characteristics of a document.\n"
+"\n"
+msgstr ""
+
+#: style.c:880
+msgid ""
+"-L, --language          set the document language.\n"
+"-l, --print-long        print all sentences longer than <length> words\n"
+"-r, --print-ari         print all sentences with an ARI greater than than "
+"<ari>\n"
+"-p, --print-passive     print all sentences phrased in the passive voice\n"
+"-N, --print-nom         print all sentences containing nominalizations\n"
+"-n, --print-nom-passive print all sentences phrased in the passive voice or\n"
+"                        containing nominalizations\n"
+msgstr ""
+
+#: style.c:888
+msgid ""
+"-h, --help              print this message\n"
+"    --version           print the version\n"
+msgstr ""
+
+#: style.c:902
+#, c-format
+msgid "style: Opening `%s' failed (%s).\n"
+msgstr ""
+
+#: style.c:920
+msgid "readability grades:\n"
+msgstr ""
+
+#: style.c:921
+msgid "Kincaid"
+msgstr ""
+
+#: style.c:922
+msgid "ARI"
+msgstr ""
+
+#: style.c:923
+msgid "Coleman-Liau"
+msgstr ""
+
+#: style.c:924
+msgid "Flesch Index"
+msgstr ""
+
+#: style.c:925
+msgid "Fog Index"
+msgstr ""
+
+#: style.c:927
+msgid "1. WSTF Index"
+msgstr ""
+
+#: style.c:928
+msgid "Wheeler-Smith Index"
+msgstr ""
+
+#: style.c:929 style.c:934
+msgid "below school year 5\n"
+msgstr ""
+
+#: style.c:930
+msgid "higher than school year 10\n"
+msgstr ""
+
+#: style.c:931 style.c:936
+#, c-format
+msgid "school year %d\n"
+msgstr ""
+
+#: style.c:933
+msgid "Lix"
+msgstr ""
+
+#: style.c:935
+msgid "higher than school year 11\n"
+msgstr ""
+
+#: style.c:937
+msgid "SMOG-Grading"
+msgstr ""
+
+#: style.c:939
+msgid "sentence info:\n"
+msgstr ""
+
+#: style.c:940
+#, c-format
+msgid "        %d characters\n"
+msgstr ""
+
+#: style.c:941
+#, c-format
+msgid "        %d words, average length %.2f characters = %.2f syllables\n"
+msgstr ""
+
+#: style.c:942
+#, c-format
+msgid "        %d sentences, average length %.1f words\n"
+msgstr ""
+
+#: style.c:946
+#, c-format
+msgid "        %d%% (%d) short sentences (at most %d words)\n"
+msgstr ""
+
+#: style.c:949
+#, c-format
+msgid "        %d%% (%d) long sentences (at least %d words)\n"
+msgstr ""
+
+#: style.c:950
+#, c-format
+msgid "        %d paragraphs, average length %.1f sentences\n"
+msgstr ""
+
+#: style.c:951
+#, c-format
+msgid "        %d%% (%d) questions\n"
+msgstr ""
+
+#: style.c:952
+#, c-format
+msgid "        %d%% (%d) passive sentences\n"
+msgstr ""
+
+#: style.c:953
+#, c-format
+msgid ""
+"        longest sent %d wds at sent %d; shortest sent %d wds at sent %d\n"
+msgstr ""
+
+#: style.c:972
+msgid "word usage:\n"
+msgstr ""
+
+#: style.c:973
+msgid "        verb types:\n"
+msgstr ""
+
+#: style.c:974
+#, c-format
+msgid "        to be (%d) auxiliary (%d) \n"
+msgstr ""
+
+#: style.c:975
+#, c-format
+msgid "        types as %% of total:\n"
+msgstr ""
+
+#: style.c:976
+msgid ""
+"        conjunctions %1.f% (%d) pronouns %1.f% (%d) prepositions %1.f% (%d)\n"
+msgstr ""
+
+#: style.c:981
+msgid "        nominalizations %1.f% (%d)\n"
+msgstr ""
+
+#: style.c:985
+msgid "sentence beginnings:\n"
+msgstr ""
+
+#: style.c:986
+#, c-format
+msgid "        pronoun (%d) interrogative pronoun (%d) article (%d)\n"
+msgstr ""
+
+#: style.c:989
+#, c-format
+msgid ""
+"        subordinating conjunction (%d) conjunction (%d) preposition (%d)\n"
+msgstr ""

@@ -1,0 +1,272 @@
+@c {{{Texinfo}}}@c {{{ Setup
+\input texinfo
+@setfilename diction.info
+@settitle diction, print wordy and commonly misused phrases in sentences
+
+@syncodeindex ky cp
+@syncodeindex pg cp
+@syncodeindex tp cp
+
+@defcodeindex op
+@syncodeindex op fn
+@syncodeindex vr fn
+
+@ifinfo
+@direntry
+* diction: (diction).           print wordy and commonly misused phrases in sentences.
+@end direntry
+This file documents @command{diction}, a program to print wordy and
+commonly misused phrases in sentences.
+
+Published by the Free Software Foundation,
+59 Temple Place - Suite 330
+Boston, MA 02111-1307, USA
+
+Copyright 1997, 1998, 1999, 2000 Michael Haardt
+
+Permission is granted to make and distribute verbatim copies of this
+manual provided the copyright notice and this permission notice are
+preserved on all copies.
+
+Permission is granted to copy and distribute modified versions of
+this manual under the conditions for verbatim copying, provided that
+the entire resulting derived work is distributed under the terms of a
+permission notice identical to this one.
+
+Permission is granted to copy and distribute translations of this manual
+into another language, under the above conditions for modified versions,
+except that this permission notice may be stated in a translation approved
+by Michael Haardt.
+@end ifinfo
+
+@setchapternewpage off
+@c }}}
+@c {{{ Title page
+@titlepage 
+@title diction, print wordy and commonly misused phrases in sentences
+@subtitle version @VERSION@, @UPDATED@
+@author Michael Haardt
+
+@page
+@vskip 0pt plus 1filll
+Copyright @copyright{} 1997, 1998, 1999, 2000 Michael Haardt
+
+@sp 2
+Published by the Free Software Foundation, @*
+59 Temple Place - Suite 330, @*
+Boston, MA 02111-1307, USA
+
+Permission is granted to make and distribute verbatim copies of this
+manual provided the copyright notice and this permission notice are
+preserved on all copies.
+
+Permission is granted to copy and distribute modified versions of
+this manual under the conditions for verbatim copying, provided that
+the entire resulting derived work is distributed under the terms of a
+permission notice identical to this one.
+
+Permission is granted to copy and distribute translations of this manual
+into another language, under the above conditions for modified versions,
+except that this permission notice may be stated in a translation approved
+by Michael Haardt.
+
+@end titlepage
+@c }}}
+@c {{{ Overview
+@page 
+@ifnottex
+@node Top
+@top Diction
+
+@command{diction} prints wordy and commonly misused phrases in sentences.
+
+This document was produced for version @VERSION@ of @sc{gnu}
+@command{diction}.
+@end ifnottex
+
+@menu
+* Introduction::                Introduction.
+* Invoking::                    Invoking @command{diction}; description of options.
+* Diagnostics::                 Exit status returned by @command{diction}.
+* Reporting Bugs::              Reporting Bugs.
+* Concept Index::               A menu with all the topics in this manual.
+* Index::                       A menu with all @command{diction} commands
+                                and command-line options.
+@end menu
+@c }}}
+@c {{{ Introduction
+@node Introduction 
+@chapter Introduction
+
+@command{diction} finds all sentences in a document, that contain
+phrases from a database of frequently misused, bad or wordy diction.
+It further checks for double words.  If no files are given, the document
+is read from standard input.  Each found phrase is enclosed in @code{[ ]}
+(brackets).  Suggestions and advice, if any, are printed headed by a right
+arrow @code{->}.  A sentence is a sequence of words, that starts with a
+capitalised word and ends with a full stop, double colon, question mark
+or exclaimation mark.  A single letter followed by a dot is considered an
+abbreviation, so it does not terminate a sentence.  Various multi-letter
+abbreviations are recognized, they do not terminate a sentence as well.
+
+@command{diction} understands @command{cpp} @code{#line} lines for being
+able to give precise locations when printing sentences.
+
+There has been a diction command on old UNIX systems, which is now part
+of the AT&T DWB package.  The original version was bound to roff by
+enforcing a call to @command{deroff}.  This version is a reimplementation
+and not must run in a pipe with @command{deroff} if you want to process
+roff documents.  Similarly, you can run it in a pipe with @command{dehtml}
+or @command{detex} to process HTML or TeX documents.
+
+See also:
+
+Cherry, L.L.; Vesterman, W.: Writing Tools-The STYLE and DICTION
+programs, Computer Science Technical Report 91, Bell Laboratories,
+Murray Hill, N.J. (1981), republished as part of the 4.4BSD User's
+Supplementary Documents by O'Reilly.
+
+Strunk, William: The elements of style, Ithaca, N.Y.: Priv. print., 1918,
+@url{http://coba.shsu.edu/help/strunk/}.
+@c }}}
+@c {{{ Invoking
+@node Invoking 
+@chapter Invoking @command{diction}
+
+@table @samp
+
+@item -f @var{file}
+@itemx --file @var{file}
+@opindex -f
+@opindex --file
+@cindex user specified database
+Read the user specified database from the specified @var{file} in addition
+to the default database.
+
+@item -n
+@itemx --no-default-file
+@opindex -n
+@opindex --no-default-file
+@cindex not loading default database
+Do not read the default database, so only the user-specified database is used.
+
+@item -L @var{language}
+@itemx --language @var{language}
+@opindex -L
+@opindex --language
+@cindex set phrase file language
+Set the phrase file language.
+
+@item -h
+@itemx --help
+@opindex -h
+@opindex --help
+@cindex print usage message
+Print a short usage message.
+
+@itemx --version
+@opindex --version
+@cindex print version
+Print the version.
+
+@end table
+
+@section Environment Variables
+
+Diction's behaviour is affected by the following environment variables.
+@cindex environment variables
+
+@table @code
+
+@itemx LC_MESSAGES
+@vindex LC_MESSAGES
+@cindex language of messages
+@cindex message language
+@cindex national language support
+@cindex NLS
+@cindex translation of message language
+This variable specifies the @code{LC_MESSAGES} locale, which determines
+the language that @command{diction} uses for messages.  American English
+is used if the environment variable is not set, or if the message catalog
+is not installed, or if @command{diction} was not compiled with national
+language support (@sc{nls}).  The variable is further used as default
+for the phrase language.
+
+@end table
+
+@section Files
+
+@cindex files
+
+@table @code
+
+@itemx @DATADIR@/diction
+This directory contains phrase databases for various languages.
+
+@end table
+@c }}}
+@c {{{ Diagnostics
+@node Diagnostics 
+@chapter Diagnostics
+
+If no errors occur, exit status is 0.  On usage errors, 1 is returned.
+Termination caused by lack of memory is signalled by exit code 2.
+@c }}}
+@c {{{ Reporting Bugs
+@node Reporting Bugs
+@chapter Reporting Bugs
+
+If you find a bug in @command{diction}, please send electronic mail to
+@email{michael@@moria.de}.  Include the version number, which you can find
+by running @command{diction --version}.  Also include the hardware and
+operating system, the compiler used to compile `diction', a description
+of the bug behavior, and the input to `diction' that triggered the bug.
+@c }}}
+@c {{{ Author
+@node Author
+@chapter Author
+
+This program is GNU software, copyright 1997, 1998, 1999, 2000 Michael Haardt
+@email{michael@@moria.de}.
+
+The english phrase file contains contributions by Greg Lindahl
+@email{lindahl@@pbm.com}, Wil Baden, Gary D. Kline, Kimberly Hanks and
+Beth Morris.
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along
+with this program.  If not, write to the Free Software Foundation, Inc.,
+59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+@c }}}
+@c {{{ Concept Index
+@page
+@node Concept Index 
+@unnumbered Concept Index
+
+This is a general index of all issues discussed in this manual, with the
+exception of the @command{diction} command-line options.
+
+@printindex cp
+@c }}}
+@c {{{ Index
+@page
+@node Index 
+@unnumbered Index
+
+This is an alphabetical list of all @command{diction} command-line
+options and environment variables.
+
+@printindex fn
+
+@contents
+@c }}}
+@bye

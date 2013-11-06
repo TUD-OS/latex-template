@@ -1,0 +1,17 @@
+- Diction does not really interpret "#" as a comment character in its
+  rules file -- we currently just hope it never matches.
+
+- Remove comments for `gosh' input, just as for LaTeX input.
+
+- Parse LaTeX's \include directives
+
+- A better algorithm for detecting double words
+
+- Add an option for showing the error message separate from the text
+
+- Should we return an error code when we found problems?
+
+- Add a method for disabling warnings on a per-sentence basis inside
+  the document.
+
+- Allow disabling warnings.  Maybe introduce warning levels.

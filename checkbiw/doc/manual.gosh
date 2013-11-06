@@ -1,0 +1,45 @@
+# -*- tcl -*-
+
+### WRITE HEADER OF TEX FILE ###
+proc produce_head_latex {} {
+	global title authors
+	
+	puts {\documentclass[twoside]{article}}
+	puts {\special{papersize=8.5in,11in}  % Letter paper - for `dvips'}
+	#puts {\usepackage[T1]{fontenc}}
+	puts {\usepackage[latin1]{inputenc}}
+	#puts {\input macros.tex}
+
+	puts {\date{\today}}
+
+	if {$title != ""} {
+		puts "\\title{[out_latex $title]}"
+		if {$authors != ""} {
+			puts "\\author{[out_latex $authors]}"
+		}
+	}
+	puts {\begin{document}}
+	if {$title != ""} {
+		puts {\maketitle}
+	}
+	puts { \tableofcontents \clearpage}
+}
+
+### WRITE TAIL OF TEX FILE ###
+proc produce_tail_latex {} {
+#	puts "\\clearpage"
+	puts "\\bibliographystyle{plain}"
+#	puts "\\footnotesize"
+	puts "\\addcontentsline{toc}{section}{References}"
+	puts "\\index{references}"
+	puts "\\bibliography{own}"
+	puts "\\end{document}"
+}
+
+
+### DOCUMENT-SPECIFIC TEXT REPLACEMENTS ###
+proc out_latex_private {string} {
+ 	regsub -all {LaTeX} $string "\\LaTeX{}" string
+#	regsub {\\\$Revision([ 0-9.]*)\\\$} $string {\\date{\\today{} --- Revision \1}} string
+ 	return $string
+}

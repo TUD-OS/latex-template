@@ -1,0 +1,108 @@
+# This file is free software; as a special exception the author gives
+# unlimited permission to copy and/or distribute it, with or without
+# modifications, as long as this notice is preserved.
+#
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+srcdir=		@srcdir@
+VPATH=		@srcdir@
+prefix=		@prefix@
+exec_prefix=	@exec_prefix@
+datadir=	@datadir@
+localedir=	$(datadir)/locale
+
+CC=		@CC@
+CFLAGS=		@CFLAGS@
+CPPFLAGS=	@CPPFLAGS@ -I. -DSHAREDIR=\"@datadir@\" -DLOCALEDIR=\"$(localedir)\"
+LDFLAGS=	@LDFLAGS@
+LIBM=		-lm
+LIBS=		@LIBS@
+
+CATALOGS=	de.mo
+
+all:		diction style all-po-@USE_NLS@
+all-po-no:
+all-po-yes:	$(CATALOGS)
+
+diction:	diction.o sentence.o misc.o getopt.o getopt1.o
+		$(CC) -o $@ $(LDFLAGS) diction.o sentence.o misc.o \
+		getopt.o getopt1.o $(LIBS)
+
+style:		style.o sentence.o misc.o getopt.o getopt1.o
+		$(CC) -o $@ $(LDFLAGS) style.o sentence.o misc.o \
+		getopt.o getopt1.o $(LIBM) $(LIBS)
+
+check:		diction
+		for i in $(srcdir)/test/test*; do $$i || break; done
+
+install:	all
+		[ -d $(DESTDIR)@bindir@ ] || @INSTALL@ -m 755 -d $(DESTDIR)@bindir@
+		@INSTALL@ diction $(DESTDIR)@bindir@/diction
+		@INSTALL@ style $(DESTDIR)@bindir@/style
+		@INSTALL@ -m 755 -d $(DESTDIR)@datadir@/diction
+		@INSTALL@ -m 644 $(srcdir)/de $(DESTDIR)@datadir@/diction/de
+		@INSTALL@ -m 644 $(srcdir)/en $(DESTDIR)@datadir@/diction/en
+		(cd $(DESTDIR)@datadir@/diction; rm -f C; ln en C)
+		[ -d $(DESTDIR)@mandir@/man1 ] || @INSTALL@ -m 755 -d $(DESTDIR)@mandir@/man1
+		@INSTALL@ -m 644 diction.1 $(DESTDIR)@mandir@/man1/diction.1
+		@INSTALL@ -m 644 style.1 $(DESTDIR)@mandir@/man1/style.1
+		make install-po-@USE_NLS@
+install-po-no:
+install-po-yes:	$(CATALOGS)
+		for cat in $(CATALOGS); do \
+		  dir=$(localedir)/`basename $$cat .mo`/LC_MESSAGES; \
+		  [ -d $(DESTDIR)$$dir ] || @INSTALL@ -m 755 -d $(DESTDIR)$$dir; \
+		  @INSTALL@ -m 644 $$cat $(DESTDIR)$$dir/diction.mo; \
+		done
+
+.c.o:
+		$(CC) -c $(CPPFLAGS) $(CFLAGS) $<
+
+.SUFFIXES:	.po .mo
+
+.po.mo:
+		msgfmt -o $@ $<
+
+$(CATALOGS:.mo=.po):	diction.pot
+		for cat in $@; do \
+		  [ -f $$cat ] || cp $(srcdir)/$$cat .; \
+		  if msgmerge $$cat $< -o $$cat.tmp; then \
+		    mv -f $$cat.tmp $$cat; \
+		    cmp -s $$cat $(srcdir)/$$cat || \
+		      cp $$cat $(srcdir)/$$cat; \
+		  else \
+		    echo "msgmerge for $$cat failed!"; \
+		    rm -f $$cat.tmp; \
+		    exit 1; \
+		  fi; \
+		done
+
+diction.pot:	$(srcdir)/*.c
+		(objdir=`pwd`; cd $(srcdir); \
+		  xgettext --add-comments --keyword=_ \
+		           --output=$$objdir/messages.po *.c )
+		test -f messages.po && mv messages.po $@
+# The sources have changed -- update diction.pot in srcdir as well.
+		cp $@ $(srcdir)/$@
+
+diction.html:	diction.texi
+		makeinfo --html diction.texi
+
+diction.info:	diction.texi
+		makeinfo diction.texi
+
+#{{{script}}}#{{{  clean
+clean:
+		rm -f *.out core *.o *.mo diction.html diction.info
+#}}}
+#{{{  distclean
+distclean:	clean
+		rm -f diction style config.cache config.h config.log config.status Makefile diction.1 diction.texi style.1 test/rundiction
+		rm -rf autom4te.cache
+#}}}
+#{{{  tar
+tar:		distclean
+		(b=`pwd`; b=`basename $$b`; cd ..; tar zcvf $$b.tar.gz $$b/COPYING $$b/INSTALL $$b/Makefile.in $$b/README $$b/NEWS $$b/configure $$b/install-sh $$b/de $$b/en $$b/test $$b/[a-z]*.*)
+#}}}

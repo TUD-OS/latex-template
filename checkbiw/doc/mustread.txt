@@ -1,0 +1,307 @@
+ The tech-paper writer's ultimate BUGS in Writing must-read list
+
+ Michael Hohmuth
+
+Why you should read this document
+#################################
+
+You are writing a paper, perhaps for a technical conference or another
+tech-savvy audience?  You want others to read your material, not
+stumble over your writing bugs?  You are a German?  
+
+Then you must read the Book BUGS in Writing [BugsInWriting].  All of it.
+This book teaches you good style and helps you avoid many of the most
+common writing errors.
+
+But if you are in a hurry, then before you read the book, read this
+document.  It lists the (in my mind) most important subjects related
+to the most common and worst writing errors, which everybody seems to
+get wrong all the time.
+
+Assumptions
+===========
+
+I assume that you are writing in American English.
+
+
+The most important orthography, grammar, and style rules
+########################################################
+
+The following subsections are (mostly) named like their counterparts
+in BUGS in Writing.  To find them in the book, use the book's Index of
+Principles on pages 635ff.
+
+Passive Voice; you and your reader (§1, §2)
+===========================================
+
+Avoid passive voice.  Mention the agent of an action as the sentence's
+subject.  Bad: ``The capability is revoked when it times out.''  Who
+revokes the capability?  Better: ``When the capability times out, the
+kernel automatically revokes it.''
+
+An especially bad excuse for not using active voice is to avoid
+referring to yourself as ``I'' or ``we.''  Do not refer to yourself as
+``the author''; do not call your audience ``the reader.'' Avoid using
+``one''; as in ``One can only wonder who writes sentences as ugly as
+this one.''
+
+Address your reader as ``you.''  When guiding the reader through your
+document or through a difficult problem, you can also use ``we.''
+When giving instructions, you can avoid pronouns altogether without
+resorting to passive voice, as in: ``Avoid passive voice.''
+
+Hyphens (§29)
+=============
+
+Use hyphens in compound adjectives, as in ``microkernel-based
+system,'' except if the adjective follows the term, as in ``the system
+is microkernel based.''
+
+There is no hyphen between adjectives (compound or not) and compound
+nouns, as in ``microkernel operating system.''
+
+Which versus That (§17)
+=======================
+
+Use ``that'' when identifying single objects or persons, as in ``the
+button that says `start'.''  Use ``which'' when conveying extra
+information about an object that already has been identified: ``Emacs,
+which is the best editor program of the world, has a working set of
+eight megabytes.''
+
+There is a comma in front of ``which,'' but never before ``that.''
+
+Enumerations, And, semicolons, and commas (§23, §26)
+====================================================
+
+When enumerating items in a list, separate the items with commas or,
+if the list items contain commas themselves, with semicolons.  Put a
+comma in front of the final item's ``and'' or ``or'' as well.  The
+only exception is a list that contains only two items---in this case,
+no comma is necessary.
+
+I.e., E.g., Etc., and Et al. (§21)
+==================================
+
+Use the Latin abbreviations ``i.e.'' (_id est_), ``e.g.'' 
+(_exempli gratia_), ``etc.'' (_et cetera_), and ``et al.'' (_et alii_)
+only when writing for an academic audience, and only inside
+parentheses.  In regular text use ``that is,'' ``for example,'' 
+``and so on,'' and ``and colleagues,'' ``and associates,'' or ``and
+coworkers.''
+
+Do not set these abbreviations in italic type; use roman type.
+
+Undefined This (§8)
+===================
+
+Always use a noun after words such as ``this,'' ``these'', ``that,''
+and ``some.''  Leaving a ``this'' dangling in the air results in
+information loss: _What_ exactly was it the ``this'' is referring to?
+
+Either and Both, Neither and Nor (§28, §99)
+===========================================
+
+Word before ``either'' and ``both'' apply to both alternatives, words
+placed after ``either'' and ``both'' apply to only one.
+
+Use ``nor'' (instead of ``or'') with ``neither.''  Again, word order
+matters: Place words that apply to both alternatives outside the
+neither--nor phrase.
+
+Note that there is no comma after ``both'' and ``neither.''
+
+Cannot versus Can Not (§104)
+============================
+
+The negation of ``can'' is ``cannot.''  Use ``can not'' only if
+someone is able of not doing something, as in ``I can not snore.''
+
+Abbreviations (§21)
+===================
+
+Always define abbreviations on first use, as in: ``...the Dresden
+Real-Time Operating System (DROPS).  DROPS provides support for...''
+
+Remember that both the abstract and the main document count as
+separate documents.  Therefore, you need to introduce abbreviations in
+both of these documents.
+
+Sections and Figures (§62)
+==========================
+
+When referring to sections, figures, and the like by number, the word
+preceding the number must be capitalized, as in 
+``Section [Sections and Figures (§62)].''
+
+Citations (§65)
+===============
+
+Use regular citations (the ones using square brackets) only for
+published material.  When referring to unpublished or
+aurally-transmitted material, use footnotes instead.
+
+Put a space in front of the opening bracket of your citation.  You
+can automate this task in LaTeX using:
+!  \usepackage{cite}
+
+The list of cited bibliographic references is called ``References,''
+not ``Bibliography''; the latter is a list of works that may or may
+not relate to a given text.
+
+Rewords, Nonwords (§106, §134)
+==============================
+
+Set rewords and nonwords---that is, words beginning with ``re'' or
+with ``non''---as single, unhyphenated words.  The exception are
+nonwords in which the second term consists of multiple words or begins
+with a capital letter (as in names).
+
+:Examples: reestimate, reentry, reevaluate, rerelease, nonmonotonic,
+  nontrivial, nonnuclear
+
+:Exceptions: re-sent (to avoid confusion with resent), non-Unix,
+  non-real-time system, non-Monte Carlo methods
+
+Em dashes and en dashes (§49, §77)
+==================================
+
+There are three kinds of dashes: hyphens ("-"; LaTeX: '-'), en dashes
+("--"; in roman script, it is as wide as the letter "n"; LaTeX: '--'),
+and em dashes ("---"; as wide as "m"; LaTeX: '---').
+
+Use hyphens to connect the terms in compound adjectives (see Section
+[Hyphens (§29)]).  LaTeX also uses it for hyphenation at the end of a line.
+
+Use en dashes in word pairs, such as ``input--output system'' (avoid
+writing ``input/output system'').
+
+Use em dashes for bracketing tangential thoughts.  Using em dashes
+highlights tangential material, whereas parentheses "()" downplays it.
+Note that there should not be whitespace next to em dashes---as in
+this example---because the em dash already provides enough separation.
+Em dashes are an excellent way to highlight clauses beginning with
+``that is'' or ``for example.''
+
+Quotation marks and quotations (§35, §41)
+=========================================
+
+Use quotation marks only for quotations and for marking irony.  Do not
+use quotation marks when introducing new terms; use _italic type_ in
+that case.
+
+In American English, commas and periods (but not semicolons or other
+punctuation) that would normally come after a quotation move into the
+quotation, ``as in this example.''  The exception to this rule is text
+for which a literal quotation is important---for example, for text
+that is intended to be typed into the reader's computer.
+
+(In British English and every other English dialect, commas and
+periods belong outside the quotation marks.)
+
+Solidus (slash) and word pairs (§117)
+=====================================
+
+The forward slash (``/'') is an abbreviation for ``and or.''  
+
+Generally, you should avoid using the slash.  When you mean ``and
+or,'' you usually can get away with just ``and.''
+
+Do not use the slash to denote word pairs.  Instead, use the en dash,
+as in ``input--output system,'' ``doctor--patient relationship''  (see
+Section [Em dashes and en dashes (§49, §77)]).
+
+Cap/lc: Capitalized section headings (§83)
+==========================================
+
+The style in which section headings and captions are capitalized in a
+funny way is called _Cap/lc_.  There are very precise rules on what to
+capitalize when using this style, and these rules are easy to get
+wrong or forget.  Therefore, I suggest you do _not_ use this style for
+your headings and captions.
+
+If you really must use Cap/lc, look up the rules in [BugsInWriting],
+Segment 83.
+
+Like versus Such As (§27)
+=========================
+
+Use ``such as'' to select examples of a group.  Use ``like'' only for
+likeness, that is, when something resembles something else.
+
+Phrases to avoid
+================
+
+:as to whether (§50):
+  Use ``whether.'' 
+
+:different than (§61):
+  Use ``different from.''
+
+:is due to (§39):
+  Do not use this phrase when you mean ``is caused by'' or ``was
+  developed, written, invented, coined by.'' Instead, use phrases like
+  ``stems from'' and ``originates in.''  Use ``is due to'' only when
+  indicating reparations.
+
+:above and below (§48):
+  Do not use these terms when referring to other sections or parts of
+  your document.  Instead, use phrases like ``Section 3,'' ``previous
+  section'' and ``next section.''
+
+:all of (§108):
+  Just ``all'' suffices.
+
+:contractions (it's OK...) (§32):
+  Do not use contractions such as ``it's'', ``he's'', ``haven't,'' or
+  ``OK'' in formal writing.  Always expand these terms.
+
+:is comprised of (§75):
+  The whole is not ``comprised of'' the parts; instead, the whole
+  comprises the parts.  (Also, the parts constitute or make up the
+  whole.)
+
+:around (§90):
+  Use ``around'' only when referring to the surroundings of
+  something.  When giving imprecise numbers, use phrases like
+  ``approximately,'' ``more or less,'' ``about,'' or ``roughly.''
+
+:effort (§16):
+  Use effort only when describing physical activity such as climbing a
+  hill.  In formal writing, you should avoid this cliché term.
+
+:equals (§57):
+  The correct wording is ``is equal to.''
+
+:impact (§25):
+  Use impact only for physical encounters.  Do not use this word when
+  you mean ``influence'' or ``effect.''
+
+:issue (§111):
+  This is another cliché term you should avoid.  Instead, state
+  clearly and precisely what you actually mean---maybe a problem or a
+  requirement?
+
+:the reason is because (§55):
+  Use just ``because'' or ``the reason is.''
+
+:the fact that (§66):
+  Use just ``that'' or leave out the phrase.
+
+:though (§52):
+  Use ``although.''
+
+:utilize (§109):
+  Normally, just ``use'' suffices.  Use ``utilize'' only when
+  activating something that is usually not used.
+
+
+;Local Variables:
+;mode:flyspell
+;ispell-local-dictionary: "american"
+;comment-start: ";"
+;comment-start-skip: "; *"
+;End:
+
+; LocalWords:  Hohmuth nonwords Solidus exempli gratia alii roman nonnuclear
+; LocalWords:  nonmonotonic usepackage

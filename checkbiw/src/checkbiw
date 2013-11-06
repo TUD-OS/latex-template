@@ -1,0 +1,213 @@
+: -*- sh -*-
+
+# Default rulesets
+rulesets="biw lang-american emdash-nospace cite-space"
+
+# colors probably need some reworking ...
+FILE_COLOR='\033[0;32;4;1m'
+LINE_COLOR='\033[0;34;1m'
+BRACKET_COLOR='\033[0;34m'
+WARNING_COLOR='\033[0;31m'
+CLAUSE_COLOR='\033[0;36m'
+TEXT_COLOR='\033[0m'
+WRONG_COLOR='\033[0;4m'
+RIGHT_COLOR='\033[0;2m'
+
+toolpath=$(dirname "$0")
+DICTIONPATH=${DICTIONPATH:-$toolpath/../diction/OBJ}
+CHECKBIWPATH=.:${CHECKBIWPATH:+${CHECKBIWPATH}:}$toolpath
+
+set -e
+
+tmp=/tmp/$USER.checkbiw.$$
+trap "cd /; rm -rf $tmp" 0 1 2 15
+(umask 077; mkdir $tmp)
+
+argopts="aid"
+shortopts="hnvc"
+optfiles="$HOME/.checkbiwrc .checkbiwrc"
+
+process () {
+    file="$1"
+
+#     if [ "x$file" = "x-" ]
+#     then
+#         file=/dev/stdin
+#     fi
+
+    # - Remove LaTeX prelude (everything up to \begin{document})
+    # - Mark paragraph endings as sentence endings by adding null
+    #   sentence "~~~."
+    # - Add appropriate #line directive.
+    perl -w -e '
+         { undef $/; $in = <>; }
+         @parts = split /begin\{document\}/, $in, 2;
+         if (scalar @parts > 1)
+           {
+             @lines = split /\n/, $parts[0];
+             $in = "#line " . scalar(@lines) . " \"" . $ARGV . "\"\n" . $parts[1];
+	     $in =~ s/%.*$//mg;
+           }
+         else
+           {
+             $in = "#line " . 1 . " \"" . $ARGV . "\"\n" . $in;
+           }
+         $in =~ s/\n\n/\n~~~.\n/sg;
+         print $in;
+    ' "$file" > $tmp/preprocessed
+    
+    if [ "$opt_c" = true ]
+    then
+        ( export PATH=${DICTIONPATH}:$PATH
+          diction --no-default-file --ignore-double-words -f $tmp/rules \
+                  $tmp/preprocessed | \
+                  perl -p -e 's/\[([^]]*) -> ([^]]*?)( \{warning\})?( §[1-9][0-9]*)?\]/'${BRACKET_COLOR}'['${WRONG_COLOR}'$1'${BRACKET_COLOR}' -> '${RIGHT_COLOR}'$2'${WARNING_COLOR}'$3'${CLAUSE_COLOR}'$4'${BRACKET_COLOR}']'${TEXT_COLOR}'/g;' \
+                          -e 's/^(.*):([1-9][0-9]*): /'${FILE_COLOR}'$1'${TEXT_COLOR}':'${LINE_COLOR}'$2'${TEXT_COLOR}': /g'
+        )
+    else
+        ( export PATH=${DICTIONPATH}:$PATH
+          diction --no-default-file --ignore-double-words -f $tmp/rules \
+                  $tmp/preprocessed)
+    fi
+}
+
+findinpath () {
+    local pathvar="$1"
+    local path="$(eval 'echo $'"$pathvar" | sed 's/:/ /g')"
+    local file="$2"
+    local dir
+
+    if [ "${file%${file#?}}" = / ] # check first character
+    then			# have absolute pathname
+	if [ -f "$file" ]
+	then
+	    echo "$file"
+	    return
+	fi
+    else			# have relative pathname
+	for dir in $path
+	do
+	    if [ -f "$dir/$file" ]
+	    then
+		echo "$dir/$file"
+		return
+	    fi
+	done
+    fi
+
+    echo "Cannot find file $file in path $pathvar" 1>&2
+    exit 1
+}
+
+removefromlist () {
+    local setname="$1"
+    local typename="$(basename $setname | cut -f1 -d-)"
+
+    # remove .../anypath/TYPENAME-anything from rulesets
+    rulesets=$(echo "$rulesets" | sed "s, \([^ ]*/\)*$typename\(-[^ ]*\)*,,g")
+}
+
+usage () {
+    cat <<FUNNY
+Usage: `basename $0` [ options ] files...
+Options: -[$shortopts]$(if [ "$argopts" ]; then echo; echo "         -[$argopts] arg"; fi)
+	 -n      Clear list of rule sets; remove default rule sets
+	 -a BASE[-EXT] Remove rule sets BASE and BASE-*, then 
+                 add rule set in file BASE[-EXT] at end of list
+                 (searches ., \$CHECKBIWPATH, and system directory)
+	 -i BASE[-EXT] Remove rule sets BASE and BASE-*, then 
+                 inserts rule set in file BASE[-EXT] at beginning of list
+                 (searches ., \$CHECKBIWPATH, and system directory)
+	 -d BASE Remove rule set in files BASE and BASE-*
+	 -c      Use colored output
+	 -v      Show used rule sets on stderr
+	 -h      Show this help and exit
+First reads options from $(echo $optfiles | sed 's/ /, /g'),
+then from command line.  Options are processed from left to right.
+File name "-" reads from stdin.
+FUNNY
+    exit $1
+}
+
+### main program starts here
+
+# scan arguments
+
+optstring="${shortopts}"$(if [ "$argopts" ]; then echo $argopts | awk '
+    { 
+        split($0,A,"");
+        for (i = 1; i <= length($0); i++) {
+            printf "%c:", A[i];
+        }
+    }
+'; fi)
+
+# also read options from ~/.checkbiwrc, ./.checkbiwrc
+
+if getopt "$optstring" "$@" >/dev/null
+then
+    set -- $(getopt "$optstring" $(cat $optfiles 2>/dev/null) "$@")
+else
+    usage 2
+fi
+
+# code for options -a/-i/-d depends on a space in front of each ruleset name
+rulesets=" $rulesets"
+
+while [ $# -ge 1 ]
+do
+    eval 'case "$1" in
+    -h)
+	usage 0 ;;
+    -n)
+	rulesets="" ;;
+    -a)
+	removefromlist "$2"
+	rulesets="$rulesets $2" 
+	shift ;;
+    -i)
+	removefromlist "$2"
+	rulesets=" $2$rulesets" 
+	shift ;;
+    -d) 
+	removefromlist "$2"
+	shift ;;
+    -['"$argopts"'])
+	i="$1"
+        eval eval opt_\${i#?}=$2
+	shift ;;
+    -['"$shortopts"'])
+	i="$1"
+	eval eval opt_\${i#?}=true ;;
+    --)
+	shift; break ;;
+    esac'
+    shift
+done
+
+if [ "$opt_v" = true ]
+then
+    echo "Using rulesets:$rulesets" 1>&2
+fi
+
+rulefiles=""
+for i in $rulesets
+do
+    rulefiles="$rulefiles $(findinpath CHECKBIWPATH $i)"
+done
+
+cat $rulefiles > $tmp/rules
+
+# process files
+
+if [ $# -lt 1 ]
+then
+    echo "No input files specified.  Run \"`basename $0` -h\" for help." 1>&2
+    exit 1
+fi
+
+while [ $# -ge 1 ]
+do
+    process "$1"
+    shift
+done
