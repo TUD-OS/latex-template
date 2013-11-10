@@ -54,7 +54,9 @@ einige Hintergrundinformationen.
 - also lookout for pdf text encoding, i.e., whether you can search in
   PDFs and copy text from PDFs, check if you can copy ligatures (ff, fi, fl)
 - typical English errors → checkbiw
-- passiv speech: **do not use it**
+- passive voice: **do not use it**
+  - Vim users can add detection for passive voice and *weasel words* via
+    Björn's [`vim-weasel` package](https://github.com/bjoernd/vim-weasel)
 - font sizes in images: adapt to other text size
 - missing meta data in PDF files (title, keywords, author)
 - "good" title page
