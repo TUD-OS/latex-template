@@ -37,7 +37,7 @@ Makefile in die entsprechende `DOC_IMG_*` Variable eingetragen
 werden. Momentan werden Grafiken in den Formaten PDF, PNG und JPEG
 unterstützt. PDF eignet sich für Vektorgrafiken und kann von den
 meisten Vektorgrafikprogrammen erzeugt werden (Inkscape, OpenOffice
-Draw, …).
+Draw, ...).
 
 Tipps
 =====
@@ -53,24 +53,29 @@ einige Hintergrundinformationen.
   - use times, palatino etc.
 - also lookout for pdf text encoding, i.e., whether you can search in
   PDFs and copy text from PDFs, check if you can copy ligatures (ff, fi, fl)
-- typical English errors → checkbiw
 - passive voice: **do not use it**
+  - There is a Makefile template checking for 'Bugs in Writing' according
+    to the book of the same name (`make checkbiw`). Diction must be installed
+    somewhere in the path (check out the directory
+    `checkbiw/diction` for details).
   - Vim users can add detection for passive voice and *weasel words* via
     Björn's [`vim-weasel` package](https://github.com/bjoernd/vim-weasel)
 - font sizes in images: adapt to other text size
-- missing meta data in PDF files (title, keywords, author)
+- avoid missing meta data in PDF files (title, keywords, author)
 - "good" title page
-- use bibtex for references, it pays off fast
+- use biblatex for references, it pays off fast
 - convert images to correct include types (vector formats)
 - protected spaces between, e.g., `Figure~1`
 - units: use the `units` package to typeset units
 - French spacing: tell latex what is an end of sentence with `\@.`
   where it cannot know it (e.g., `This is a sentence ending on an
   abbreviation BASIC\@.  Next sentence.`)
+  - Again, you can try to detect a good portion of French spacing
+    using an automatic algorithm (`make check-french-spacing`).
+    Improvements are welcome.
 - wrong µ symbol, use `\textmu` for non-italic µ in continous text
 - in American English, listings with at least three elements have a
   comma before the last and/or: *"Set A contains elements a, b, and c."*
-  → BIW
 - more stylistic information can be found in *Bugs in writing* (BIW)
   by Lyn Dupré
 
