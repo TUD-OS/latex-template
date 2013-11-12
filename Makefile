@@ -39,7 +39,7 @@ DOC_CLEAN = $(DOC_PDF)									\
 
 VERBOSE = @
 
-.PHONY: pdf clean checkbiw check-french-spacing
+.PHONY: default pdf clean check-french-spacing checkbiw
 
 default: pdf
 
