@@ -1,4 +1,6 @@
-\documentclass[a4paper,abstract=true,twoside,liststotocpointlessnumbers,bibtotoc,BCOR1.5cm,headsepline,DIV12,appendixprefix,final]{scrreprt}
+\documentclass[a4paper,abstract=true,twoside,listof=totoc,%
+numbers=noenddot,bibliography=totoc,BCOR1.5cm,headsepline,DIV12,%
+appendixprefix,final]{scrreprt}
 
 \usepackage[ngerman,english]{babel}
 %\usepackage{lmodern}            % use lmodern fonts
@@ -17,19 +19,18 @@
 % End-of-Font 2
 
 % BibLaTeX instead of BibTeX
-\usepackage[style=alphabetic]{biblatex}
+\usepackage[backend=biber,style=alphabetic]{biblatex}
 \addbibresource{own.bib}
 
 \usepackage{textcomp}           % for \textmu (non-italic $\mu$)
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}   % can use native umlauts
 \setcounter{secnumdepth}{3}     % limit enumeration depth
 \setcounter{tocdepth}{1}        % limit TOC depth
 %\usepackage[it,bf,tight,hang,raggedright]{subfigure}
 \usepackage{varioref}           % nice refs
 \usepackage{graphicx}
+\usepackage{csquotes}
 \usepackage{wrapfig}
-\usepackage{setspace}           % line spacing 
+\usepackage{setspace}           % line spacing
 \makeatletter
 \usepackage{array}
 \usepackage{fancybox}           % provide nice boxes
@@ -174,7 +175,7 @@ Professur Betriebssysteme\\
  {\normalsize }\begin{tabular}{ll}
 Betreuender Hochschullehrer: &
 Prof. Dr. rer. nat. Hermann Härtig\tabularnewline
-Betreuender Mitarbeiter:&
+Betreuender Mitarbeiter: &
 Dipl.-Inf. Dein Betreuer\tabularnewline
 \end{tabular} {\normalsize }\end{minipage}}
 
@@ -216,7 +217,7 @@ und keine anderen als die angegebenen Hilfsmittel benutzt habe.
 %   This page is intentionally left blank.
 % \end{center}
 % Force LaTeX to really emit an empty page.
-\vspace*{1em} 
+\vspace*{1em}
 \cleardoublepage
 
 %\doublespacing
