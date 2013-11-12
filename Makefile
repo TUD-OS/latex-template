@@ -17,25 +17,32 @@ DOC_TEX_ADD ?= conclusion.tex futurework.tex design.tex evaluation.tex	\
 DOC_BIB     ?= own.bib
 
 # images
-DOC_IMG_JPG = images/squirrel.jpg # you can specify multiple images here
-DOC_IMG_PNG =
-DOC_IMG_PDF = images/diplom-aufgabe.pdf
+DOC_IMG_JPG  = images/squirrel.jpg # you can specify multiple images here
+DOC_IMG_PNG  =
+DOC_IMG_PDF  = images/diplom-aufgabe.pdf
 
 # latex stuff
 PDFLATEX    ?= pdflatex
 BIBER       ?= biber
+DETEX       ?= detex
 CHECKBIW    ?= checkbiw/src/checkbiw
 
 ######################################################################
 # You should not need to adapt stuff below this line ...
 ######################################################################
 
-DOC_PDF		= $(DOC_TEX:.tex=.pdf)
-DOC_BASE	= $(DOC_TEX:.tex=)
+DOC_PDF      = $(DOC_TEX:.tex=.pdf)
+# Use De-TeXed output for the prose analysis, because you
+# may have obsolete text commented out that you do not want to check
+# for flaws
+DOC_TXT      = $(DOC_TEX:.tex=.detex)
+DOC_TXT_ADD  = $(DOC_TEX_ADD:.tex=.detex)
+DOC_BASE     = $(DOC_TEX:.tex=)
 
-DOC_CLEAN = $(DOC_PDF)									\
-            $(DOC_BASE).{aux,log,toc,bcf,bbl,blg,ltf,brf,out,lof,nav,snm,acn,glo,ist,lot,run.xml}	\
-            *~
+DOC_CLEAN    = $(DOC_PDF)									\
+               $(DOC_BASE).{aux,log,toc,bcf,bbl,blg,ltf,brf,out,lof,nav,snm,acn,glo,ist,lot,run.xml}	\
+               $(DOC_TXT) $(DOC_TXT_ADD) \
+               *~
 
 VERBOSE = @
 
@@ -59,6 +66,9 @@ $(DOC_PDF): $(DOC_TEX) $(DOC_TEX_ADD) $(DOC_BIB) $(DOC_IMG_JPG)		\
 # one more time, just to be sure ...
 	$(VERBOSE)$(PDFLATEX) $(DOC_TEX)
 
+%.detex: %.tex
+	$(DETEX) $< > $@
+
 pdf: $(DOC_PDF)
 
 clean:
@@ -69,12 +79,12 @@ clean:
 check-french-spacing:
 	$(VERBOSE)export GREP_COLOR='1;32'; \
 	export GREP_OPTIONS='--color=auto'; \
-	grep "[A-Z]\{2,\}\." $(DOC_TEX) $(DOC_TEX_ADD) || \
-	grep -e 'e\.g\.' -e 'i\.e\.' -e 'd\.h\.' $(DOC_TEX) $(DOC_TEX_ADD) || \
+	grep "[A-Z]\{2,\}\." $(DOC_TXT) $(DOC_TXT_ADD) || \
+	grep -e 'e\.g\.' -e 'i\.e\.' -e 'd\.h\.' $(DOC_TXT) $(DOC_TXT_ADD) || \
 	true
 
 # check for conformance with "bugs in writing", english only
-checkbiw:
-	$(VERBOSE)$(CHECKBIW) -v -c -d emdash $(DOC_TEX) $(DOC_TEX_ADD)
+checkbiw: $(DOC_TXT) $(DOC_TXT_ADD)
+	$(VERBOSE)$(CHECKBIW) -v -c -d emdash $(DOC_TXT) $(DOC_TXT_ADD)
 
 # EOF
