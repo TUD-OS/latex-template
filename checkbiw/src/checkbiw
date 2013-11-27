@@ -55,18 +55,18 @@ process () {
          $in =~ s/\n\n/\n~~~.\n/sg;
          print $in;
     ' "$file" > $tmp/preprocessed
-    
+
     if [ "$opt_c" = true ]
     then
         ( export PATH=${DICTIONPATH}:$PATH
-          diction --no-default-file --ignore-double-words -f $tmp/rules \
+          diction -s --no-default-file --ignore-double-words -f $tmp/rules \
                   $tmp/preprocessed | \
                   perl -p -e 's/\[([^]]*) -> ([^]]*?)( \{warning\})?( §[1-9][0-9]*)?\]/'${BRACKET_COLOR}'['${WRONG_COLOR}'$1'${BRACKET_COLOR}' -> '${RIGHT_COLOR}'$2'${WARNING_COLOR}'$3'${CLAUSE_COLOR}'$4'${BRACKET_COLOR}']'${TEXT_COLOR}'/g;' \
                           -e 's/^(.*):([1-9][0-9]*): /'${FILE_COLOR}'$1'${TEXT_COLOR}':'${LINE_COLOR}'$2'${TEXT_COLOR}': /g'
         )
     else
         ( export PATH=${DICTIONPATH}:$PATH
-          diction --no-default-file --ignore-double-words -f $tmp/rules \
+          diction -s --no-default-file --ignore-double-words -f $tmp/rules \
                   $tmp/preprocessed)
     fi
 }
@@ -112,10 +112,10 @@ usage () {
 Usage: `basename $0` [ options ] files...
 Options: -[$shortopts]$(if [ "$argopts" ]; then echo; echo "         -[$argopts] arg"; fi)
 	 -n      Clear list of rule sets; remove default rule sets
-	 -a BASE[-EXT] Remove rule sets BASE and BASE-*, then 
+	 -a BASE[-EXT] Remove rule sets BASE and BASE-*, then
                  add rule set in file BASE[-EXT] at end of list
                  (searches ., \$CHECKBIWPATH, and system directory)
-	 -i BASE[-EXT] Remove rule sets BASE and BASE-*, then 
+	 -i BASE[-EXT] Remove rule sets BASE and BASE-*, then
                  inserts rule set in file BASE[-EXT] at beginning of list
                  (searches ., \$CHECKBIWPATH, and system directory)
 	 -d BASE Remove rule set in files BASE and BASE-*
@@ -134,7 +134,7 @@ FUNNY
 # scan arguments
 
 optstring="${shortopts}"$(if [ "$argopts" ]; then echo $argopts | awk '
-    { 
+    {
         split($0,A,"");
         for (i = 1; i <= length($0); i++) {
             printf "%c:", A[i];
@@ -163,13 +163,13 @@ do
 	rulesets="" ;;
     -a)
 	removefromlist "$2"
-	rulesets="$rulesets $2" 
+	rulesets="$rulesets $2"
 	shift ;;
     -i)
 	removefromlist "$2"
-	rulesets=" $2$rulesets" 
+	rulesets=" $2$rulesets"
 	shift ;;
-    -d) 
+    -d)
 	removefromlist "$2"
 	shift ;;
     -['"$argopts"'])
