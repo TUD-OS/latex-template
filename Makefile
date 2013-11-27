@@ -22,7 +22,7 @@ DOC_IMG_PNG  =
 DOC_IMG_PDF  = images/diplom-aufgabe.pdf
 
 # latex stuff
-PDFLATEX    ?= pdflatex
+LUALATEX    ?= lualatex
 BIBER       ?= biber
 DETEX       ?= detex
 CHECKBIW    ?= checkbiw/src/checkbiw
@@ -52,7 +52,7 @@ default: pdf
 
 $(DOC_PDF): $(DOC_TEX) $(DOC_TEX_ADD) $(DOC_BIB) $(DOC_IMG_JPG)		\
             $(DOC_IMG_PNG) $(DOC_IMG_PNG) $(DOC_IMG_PDF) Makefile
-	$(VERBOSE)$(PDFLATEX) $(DOC_TEX) || \
+	$(VERBOSE)$(LUALATEX) $(DOC_TEX) || \
 	    ((grep 'TeX capacity exceeded' $(DOC_PDF:.pdf=.log) && \
 	   echo -e "\n\033[31mIncrease pool_size to 200000 in" \
 	           "/etc/texmf/texmf.cnf!\033[m\n" && false) || false)
@@ -61,10 +61,10 @@ $(DOC_PDF): $(DOC_TEX) $(DOC_TEX_ADD) $(DOC_BIB) $(DOC_IMG_JPG)		\
 	$(VERBOSE)(export size=1 ; touch $(DOC_PDF);\
 	  until [ $$size -eq `ls -o $(DOC_PDF) | awk '{print $$4}'` ]; do\
 	    export size=`ls -o $(DOC_PDF) | awk '{print $$4}'` ;\
-	    $(PDFLATEX) $(DOC_TEX) ;\
+	    $(LUALATEX) $(DOC_TEX) ;\
 	  done)
 # one more time, just to be sure ...
-	$(VERBOSE)$(PDFLATEX) $(DOC_TEX)
+	$(VERBOSE)$(LUALATEX) $(DOC_TEX)
 
 %.detex: %.tex
 	$(DETEX) $< > $@
