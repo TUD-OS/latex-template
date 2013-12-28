@@ -2,6 +2,7 @@
 numbers=noenddot,bibliography=totoc,BCOR1.5cm,headsepline,DIV12,%
 appendixprefix,final]{scrreprt}
 
+% You should select either american or british instead of english here:
 \usepackage[ngerman,english]{babel}
 %\usepackage{lmodern}            % use lmodern fonts
 
@@ -138,12 +139,6 @@ pdfborder={0.75 0.75 1},plainpages=false,pdfpagelabels=true]{hyperref}
   \@starttoc{lod}%
 }
 
-\newcommand{\asd}{%
-  \@ifstar{Sogar ein Stern ist vorhanden.}%
-          {Nein, es gibt keinen Stern}}
-
-%\usepackage{todo}
-
 \usepackage{xspace}
 % some common commands
 \newcommand{\drops}{\texorpdfstring{\textsc{Drops}\xspace}{DROPS}}
@@ -152,7 +147,8 @@ pdfborder={0.75 0.75 1},plainpages=false,pdfpagelabels=true]{hyperref}
 \newcommand{\NOVA}{NOVA\xspace}
 \newcommand{\QEMU}{QEMU\xspace}
 
-\date{30. April 2009}
+% If you know when you will hand in your thesis, enter the date here.
+%\date{30. April 2009}
 
 \makeatother
 \begin{document}
@@ -199,6 +195,7 @@ und keine anderen als die angegebenen Hilfsmittel benutzt habe.
 
 \noindent Otto Mustermann \cleardoublepage{}
 
+% NOTE: if you selected british or american above, change that here too
 \selectlanguage{english}
 
 \begin{abstract}
