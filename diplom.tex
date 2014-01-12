@@ -20,7 +20,7 @@ appendixprefix,final]{scrreprt}
 % End-of-Font 2
 
 % BibLaTeX instead of BibTeX
-\usepackage[backend=biber,style=alphabetic]{biblatex}
+\usepackage[backend=biber,style=alphabetic,alldates=long]{biblatex}
 \addbibresource{own.bib}
 
 \usepackage{textcomp}           % for \textmu (non-italic $\mu$)
@@ -36,7 +36,8 @@ appendixprefix,final]{scrreprt}
 \usepackage{array}
 \usepackage{fancybox}           % provide nice boxes
 \usepackage{units}              % unified way of setting values with units
-\usepackage[clearempty]{titlesec}
+% apparently breaks KOMA-Script:
+%\usepackage[clearempty]{titlesec}
 \usepackage{listings}           % nice source code listings
 \lstset{frame=shadowbox, rulesepcolor=\color{blue}}
 
@@ -140,6 +141,11 @@ pdfborder={0.75 0.75 1},plainpages=false,pdfpagelabels=true]{hyperref}
 }
 
 \usepackage{xspace}
+
+% use this one last
+% (redefines some macros for compatibility with KOMAScript)
+\usepackage{scrhack}
+
 % some common commands
 \newcommand{\drops}{\texorpdfstring{\textsc{Drops}\xspace}{DROPS}}
 \newcommand{\LLinux}{\texorpdfstring{L$\!^4$Linux}{L4Linux}}

@@ -22,13 +22,13 @@ Referencing other chapters: \ref{sec:state} \ref{sec:design}
 \begin{table}[htp]
   \centering
   \begin{tabular}{lrr}
-    \bf Name & \bf Y & \bf Z \\
+    \textbf{Name} & \textbf{Y} & \textbf{Z} \\
     \hline
-    \it Foo & 20,614 & \unit[23]{\%} \\
-    \it Bar & 9,914 & \unit[11]{\%} \\
-    \it Foo + Bar & 30,528 & \unit[34]{\%} \\
+    \textit{Foo} & 20,614 & \unit[23]{\%} \\
+    \textit{Bar} & 9,914 & \unit[11]{\%} \\
+    \textit{Foo + Bar} & 30,528 & \unit[34]{\%} \\
     \hline
-    \it total & 88,215 & \unit[100]{\%} \\
+    \textit{total} & 88,215 & \unit[100]{\%} \\
 
   \end{tabular}
   \caption[Some interesting numbers]{Various very important looking numbers and sums.}
@@ -50,6 +50,11 @@ More text referencing Table~\ref{tab:numbers}.
 
 Citing \cite{bellard2005qfa} other documents \cite{bellard2005qfa, boileau06}
 and Figure~\ref{fig:squirrel}.
+
+Something with umlauts and a year/month date:
+\cite{becher04:_feurig_hacken_mit_firew}.
+
+And some online resources: \cite{green04}, \cite{patent:4819234}
 
 \cleardoublepage
 
