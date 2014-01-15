@@ -22,7 +22,7 @@ DOC_IMG_PNG  =
 DOC_IMG_PDF  = images/diplom-aufgabe.pdf
 
 # latex stuff
-LUALATEX    ?= lualatex
+LUALATEX    ?= lualatex --synctex=1
 BIBER       ?= biber
 DETEX       ?= detex
 CHECKBIW    ?= checkbiw/src/checkbiw
@@ -40,7 +40,9 @@ DOC_TXT_ADD  = $(DOC_TEX_ADD:.tex=.detex)
 DOC_BASE     = $(DOC_TEX:.tex=)
 
 DOC_CLEAN    = $(DOC_PDF)									\
-               $(DOC_BASE).{aux,log,toc,bcf,bbl,blg,ltf,brf,out,lof,nav,snm,acn,glo,ist,lot,run.xml}	\
+               $(DOC_BASE).{aux,log,toc,bcf,bbl,blg,ltf,brf,out} \
+			   $(DOC_BASE).{lof,nav,snm,acn,glo,ist,lot,run.xml} \
+			   $(DOC_BASE).{synctex,synctex.gz} \
                $(DOC_TXT) $(DOC_TXT_ADD) \
                *~
 
