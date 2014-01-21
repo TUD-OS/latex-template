@@ -1,3 +1,4 @@
+
 auto
 *.log
 *.aux
@@ -20,3 +21,13 @@ auto
 *.toc
 .sconsign.dblite
 *~
+
+*.bcf
+*.pdf
+*.run.xml
+*.synctex.gz
+
+# vim tmp files
+*.swp
+*.swo
+
