@@ -65,8 +65,6 @@ $(DOC_PDF): $(DOC_TEX) $(DOC_TEX_ADD) $(DOC_BIB) $(DOC_IMG_JPG)		\
 	    export size=`ls -o $(DOC_PDF) | awk '{print $$4}'` ;\
 	    $(LUALATEX) $(DOC_TEX) ;\
 	  done)
-# one more time, just to be sure ...
-	$(VERBOSE)$(LUALATEX) $(DOC_TEX)
 
 %.detex: %.tex
 	$(DETEX) $< > $@
