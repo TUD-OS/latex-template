@@ -4,11 +4,10 @@ appendixprefix,final]{scrreprt}
 
 % You should select either american or british instead of english here:
 \usepackage[ngerman,english]{babel}
-%\usepackage{lmodern}            % use lmodern fonts
 
 % This is the font I use for figures. Should I use it for everything?
-\usepackage[bitstream-charter]{mathdesign}
-\usepackage{berasans}
+\usepackage[charter]{mathdesign}
+\usepackage{fontspec}
 
 % Font 2
 %% Use scalable, PostScript Type 1 versions of the Computer Modern fonts.
@@ -185,7 +184,7 @@ und keine anderen als die angegebenen Hilfsmittel benutzt habe.
 \noindent Dresden, den \today % 30. April 2009
 \vspace{2.5cm}
 
-\noindent Otto Mustermann \cleardoublepage{}
+\noindent Otto Mustermann, äöüßÄÖÜ \cleardoublepage{}
 
 % NOTE: if you selected british or american above, change that here too
 \selectlanguage{english}
