@@ -4,11 +4,6 @@ Was ist das?
 Dieses Diplomarbeits-Latex-Template stellt ein Skelett für eine
 Diplomarbeit mit zugehöriger Make-Datei zur Verfügung.
 
-Kommentare und Verbesserungen an:
-
-- Julian Stecklina <jsteckli@os.inf.tu-dresden.de>
-- Martin Unzner <munzner@os.inf.tu-dresden.de>
-
 So geht's los
 ==============
 
@@ -45,14 +40,6 @@ Tipps
 Diese Datei enthält im Moment ein Sammlung von Tipps und Tricks, sowie
 einige Hintergrundinformationen.
 
-- bitmap fonts: **don't use them!** Alternatives:
-  - use the `lmodern` package (vector replacements for the CM font family),
-  - install the `cm-super` package (also vector replacements for the CM
-    font family, more glyphs but slightly lower quality, useful for
-    non-latin texts), or
-  - use times, palatino etc.
-- also lookout for pdf text encoding, i.e., whether you can search in
-  PDFs and copy text from PDFs, check if you can copy ligatures (ff, fi, fl)
 - passive voice: **do not use it**
   - There is a Makefile template checking for 'Bugs in Writing' according
     to the book of the same name (`make checkbiw`). Diction must be installed
@@ -61,11 +48,12 @@ einige Hintergrundinformationen.
   - Vim users can add detection for passive voice and *weasel words* via
     Björn's [`vim-weasel` package](https://github.com/bjoernd/vim-weasel)
 - font sizes in images: adapt to other text size
+   (ideally, use PGF/TikZ and PGFPlots)
 - avoid missing meta data in PDF files (title, keywords, author)
 - "good" title page
 - use biblatex for references, it pays off fast
-- convert images to correct include types (vector formats)
-- protected spaces between, e.g., `Figure~1`
+- convert images to correct include types (vector formats, e.g. PDF)
+- protected spaces between, e.g., `Figure~1`, `~\cite{xyz}`
 - units: use the `units` package to typeset units
 - French spacing: tell latex what is an end of sentence with `\@.`
   where it cannot know it (e.g., `This is a sentence ending on an
@@ -73,9 +61,9 @@ einige Hintergrundinformationen.
   - Again, you can try to detect a good portion of French spacing
     using an automatic algorithm (`make check-french-spacing`).
     Improvements are welcome.
-- wrong µ symbol, use `\textmu` for non-italic µ in continous text
-- in American English, listings with at least three elements have a
-  comma before the last and/or: *"Set A contains elements a, b, and c."*
+- listings with at least three elements have a
+  comma before the last and/or (*serial* or *Oxford comma*):
+  *"Set A contains elements a, b, and c."*
 - more stylistic information can be found in *Bugs in writing* (BIW)
   by Lyn Dupré
 
