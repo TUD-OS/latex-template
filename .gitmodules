@@ -1,0 +1,3 @@
+[submodule "gosh"]
+	path = gosh
+	url = git@github.com:nfeske/gosh
