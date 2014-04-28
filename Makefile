@@ -65,8 +65,8 @@ $(DOC_PDF): $(DOC_TEX) $(DOC_TEX_ADD) $(DOC_BIB) $(DOC_IMG_JPG)		\
 	    $(LUALATEX) $(DOC_TEX) ;\
 	  done)
 
-%.detex: %.tex
-	$(DETEX) $< > $@
+$(DOC_TXT): $(DOC_TEX) $(DOC_TEX_ADD)
+	$(DETEX) $(DOC_TEX) > $(DOC_TXT)
 
 pdf: $(DOC_PDF)
 
@@ -75,11 +75,11 @@ clean:
 
 # Points out abbreviations and reminds you of escaping
 # the space after the period
-check-french-spacing: $(DOC_TXT)
+check-french-spacing: $(DOC_TEX) $(DOC_TEX_ADD)
 	$(VERBOSE)export GREP_COLOR='1;32'; \
 	export GREP_OPTIONS='--color=auto'; \
-	grep "[A-Z]\{2,\}\." $(DOC_TXT) || \
-	grep -e 'e\.g\.' -e 'i\.e\.' -e 'd\.h\.' $(DOC_TXT) || \
+	grep "[A-Z]\{2,\}\." $(DOC_TEX) $(DOC_TEX_ADD) || \
+	grep -e 'e\.g\.' -e 'i\.e\.' -e 'd\.h\.' $(DOC_TEX) $(DOC_TEX_ADD) || \
 	true
 
 # check for conformance with "bugs in writing", English only
