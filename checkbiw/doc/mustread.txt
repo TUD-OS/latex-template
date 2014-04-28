@@ -31,7 +31,7 @@ The following subsections are (mostly) named like their counterparts
 in BUGS in Writing.  To find them in the book, use the book's Index of
 Principles on pages 635ff.
 
-Passive Voice; you and your reader (ง1, ง2)
+Passive Voice; you and your reader (ยง1, ยง2)
 ===========================================
 
 Avoid passive voice.  Mention the agent of an action as the sentence's
@@ -50,7 +50,7 @@ document or through a difficult problem, you can also use ``we.''
 When giving instructions, you can avoid pronouns altogether without
 resorting to passive voice, as in: ``Avoid passive voice.''
 
-Hyphens (ง29)
+Hyphens (ยง29)
 =============
 
 Use hyphens in compound adjectives, as in ``microkernel-based
@@ -60,7 +60,7 @@ is microkernel based.''
 There is no hyphen between adjectives (compound or not) and compound
 nouns, as in ``microkernel operating system.''
 
-Which versus That (ง17)
+Which versus That (ยง17)
 =======================
 
 Use ``that'' when identifying single objects or persons, as in ``the
@@ -71,7 +71,7 @@ eight megabytes.''
 
 There is a comma in front of ``which,'' but never before ``that.''
 
-Enumerations, And, semicolons, and commas (ง23, ง26)
+Enumerations, And, semicolons, and commas (ยง23, ยง26)
 ====================================================
 
 When enumerating items in a list, separate the items with commas or,
@@ -80,7 +80,7 @@ comma in front of the final item's ``and'' or ``or'' as well.  The
 only exception is a list that contains only two items---in this case,
 no comma is necessary.
 
-I.e., E.g., Etc., and Et al. (ง21)
+I.e., E.g., Etc., and Et al. (ยง21)
 ==================================
 
 Use the Latin abbreviations ``i.e.'' (_id est_), ``e.g.'' 
@@ -92,14 +92,14 @@ coworkers.''
 
 Do not set these abbreviations in italic type; use roman type.
 
-Undefined This (ง8)
+Undefined This (ยง8)
 ===================
 
 Always use a noun after words such as ``this,'' ``these'', ``that,''
 and ``some.''  Leaving a ``this'' dangling in the air results in
 information loss: _What_ exactly was it the ``this'' is referring to?
 
-Either and Both, Neither and Nor (ง28, ง99)
+Either and Both, Neither and Nor (ยง28, ยง99)
 ===========================================
 
 Word before ``either'' and ``both'' apply to both alternatives, words
@@ -111,13 +111,13 @@ neither--nor phrase.
 
 Note that there is no comma after ``both'' and ``neither.''
 
-Cannot versus Can Not (ง104)
+Cannot versus Can Not (ยง104)
 ============================
 
 The negation of ``can'' is ``cannot.''  Use ``can not'' only if
 someone is able of not doing something, as in ``I can not snore.''
 
-Abbreviations (ง21)
+Abbreviations (ยง21)
 ===================
 
 Always define abbreviations on first use, as in: ``...the Dresden
@@ -127,14 +127,14 @@ Remember that both the abstract and the main document count as
 separate documents.  Therefore, you need to introduce abbreviations in
 both of these documents.
 
-Sections and Figures (ง62)
+Sections and Figures (ยง62)
 ==========================
 
 When referring to sections, figures, and the like by number, the word
 preceding the number must be capitalized, as in 
-``Section [Sections and Figures (ง62)].''
+``Section [Sections and Figures (ยง62)].''
 
-Citations (ง65)
+Citations (ยง65)
 ===============
 
 Use regular citations (the ones using square brackets) only for
@@ -149,7 +149,7 @@ The list of cited bibliographic references is called ``References,''
 not ``Bibliography''; the latter is a list of works that may or may
 not relate to a given text.
 
-Rewords, Nonwords (ง106, ง134)
+Rewords, Nonwords (ยง106, ยง134)
 ==============================
 
 Set rewords and nonwords---that is, words beginning with ``re'' or
@@ -163,7 +163,7 @@ with a capital letter (as in names).
 :Exceptions: re-sent (to avoid confusion with resent), non-Unix,
   non-real-time system, non-Monte Carlo methods
 
-Em dashes and en dashes (ง49, ง77)
+Em dashes and en dashes (ยง49, ยง77)
 ==================================
 
 There are three kinds of dashes: hyphens ("-"; LaTeX: '-'), en dashes
@@ -171,7 +171,7 @@ There are three kinds of dashes: hyphens ("-"; LaTeX: '-'), en dashes
 and em dashes ("---"; as wide as "m"; LaTeX: '---').
 
 Use hyphens to connect the terms in compound adjectives (see Section
-[Hyphens (ง29)]).  LaTeX also uses it for hyphenation at the end of a line.
+[Hyphens (ยง29)]).  LaTeX also uses it for hyphenation at the end of a line.
 
 Use en dashes in word pairs, such as ``input--output system'' (avoid
 writing ``input/output system'').
@@ -183,7 +183,7 @@ this example---because the em dash already provides enough separation.
 Em dashes are an excellent way to highlight clauses beginning with
 ``that is'' or ``for example.''
 
-Quotation marks and quotations (ง35, ง41)
+Quotation marks and quotations (ยง35, ยง41)
 =========================================
 
 Use quotation marks only for quotations and for marking irony.  Do not
@@ -199,7 +199,7 @@ that is intended to be typed into the reader's computer.
 (In British English and every other English dialect, commas and
 periods belong outside the quotation marks.)
 
-Solidus (slash) and word pairs (ง117)
+Solidus (slash) and word pairs (ยง117)
 =====================================
 
 The forward slash (``/'') is an abbreviation for ``and or.''  
@@ -209,9 +209,9 @@ or,'' you usually can get away with just ``and.''
 
 Do not use the slash to denote word pairs.  Instead, use the en dash,
 as in ``input--output system,'' ``doctor--patient relationship''  (see
-Section [Em dashes and en dashes (ง49, ง77)]).
+Section [Em dashes and en dashes (ยง49, ยง77)]).
 
-Cap/lc: Capitalized section headings (ง83)
+Cap/lc: Capitalized section headings (ยง83)
 ==========================================
 
 The style in which section headings and captions are capitalized in a
@@ -223,7 +223,7 @@ your headings and captions.
 If you really must use Cap/lc, look up the rules in [BugsInWriting],
 Segment 83.
 
-Like versus Such As (ง27)
+Like versus Such As (ยง27)
 =========================
 
 Use ``such as'' to select examples of a group.  Use ``like'' only for
@@ -232,66 +232,66 @@ likeness, that is, when something resembles something else.
 Phrases to avoid
 ================
 
-:as to whether (ง50):
+:as to whether (ยง50):
   Use ``whether.'' 
 
-:different than (ง61):
+:different than (ยง61):
   Use ``different from.''
 
-:is due to (ง39):
+:is due to (ยง39):
   Do not use this phrase when you mean ``is caused by'' or ``was
   developed, written, invented, coined by.'' Instead, use phrases like
   ``stems from'' and ``originates in.''  Use ``is due to'' only when
   indicating reparations.
 
-:above and below (ง48):
+:above and below (ยง48):
   Do not use these terms when referring to other sections or parts of
   your document.  Instead, use phrases like ``Section 3,'' ``previous
   section'' and ``next section.''
 
-:all of (ง108):
+:all of (ยง108):
   Just ``all'' suffices.
 
-:contractions (it's OK...) (ง32):
+:contractions (it's OK...) (ยง32):
   Do not use contractions such as ``it's'', ``he's'', ``haven't,'' or
   ``OK'' in formal writing.  Always expand these terms.
 
-:is comprised of (ง75):
+:is comprised of (ยง75):
   The whole is not ``comprised of'' the parts; instead, the whole
   comprises the parts.  (Also, the parts constitute or make up the
   whole.)
 
-:around (ง90):
+:around (ยง90):
   Use ``around'' only when referring to the surroundings of
   something.  When giving imprecise numbers, use phrases like
   ``approximately,'' ``more or less,'' ``about,'' or ``roughly.''
 
-:effort (ง16):
+:effort (ยง16):
   Use effort only when describing physical activity such as climbing a
-  hill.  In formal writing, you should avoid this clich้ term.
+  hill.  In formal writing, you should avoid this clichรฉ term.
 
-:equals (ง57):
+:equals (ยง57):
   The correct wording is ``is equal to.''
 
-:impact (ง25):
+:impact (ยง25):
   Use impact only for physical encounters.  Do not use this word when
   you mean ``influence'' or ``effect.''
 
-:issue (ง111):
-  This is another clich้ term you should avoid.  Instead, state
+:issue (ยง111):
+  This is another clichรฉ term you should avoid.  Instead, state
   clearly and precisely what you actually mean---maybe a problem or a
   requirement?
 
-:the reason is because (ง55):
+:the reason is because (ยง55):
   Use just ``because'' or ``the reason is.''
 
-:the fact that (ง66):
+:the fact that (ยง66):
   Use just ``that'' or leave out the phrase.
 
-:though (ง52):
+:though (ยง52):
   Use ``although.''
 
-:utilize (ง109):
+:utilize (ยง109):
   Normally, just ``use'' suffices.  Use ``utilize'' only when
   activating something that is usually not used.
 

@@ -13,7 +13,7 @@ Description
 
 The checkbiw tool finds and flags stylistic errors in English
 documents.  Checkbiw comes with a number of style rule sets that were
-derived from Lyn Dupré's book ``BUGS in Writing---A Guide to Debugging
+derived from Lyn DuprÃ©'s book ``BUGS in Writing---A Guide to Debugging
 your prose.''  
 
 To adapt checkbiw to your needs, you can remove and add standard or
@@ -157,7 +157,7 @@ Michael Hohmuth: "The tech-paper writer's ultimate BUGS in Writing
 must-read list".  File doc/mustread.pdf; hardcopy version of
 bugsinwriting(7).
 
-Lyn Dupré: "BUGS in Writing---A Guide to Debugging Your Prose".
+Lyn DuprÃ©: "BUGS in Writing---A Guide to Debugging Your Prose".
 Addison--Wesley 1998
 
 ;Local Variables:

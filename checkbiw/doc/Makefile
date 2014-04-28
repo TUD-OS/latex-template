@@ -1,7 +1,10 @@
 TXTFILES	:= mustread.txt manpage.txt
 BIBFILES	:= own.bib
 
-GOSHDIR		:= /usr/bin
+# NOTE: Remember to check out the gosh submodule using
+#     git submodule init
+#     git submodule update
+GOSHDIR		:= ../../gosh
 GOSH		:= $(GOSHDIR)/gosh
 TXT2TEX_OPT	:= --style manual.gosh
 TXT2MAN_OPT	:= --style $(GOSHDIR)/man.gosh

@@ -3,11 +3,11 @@
 ### WRITE HEADER OF TEX FILE ###
 proc produce_head_latex {} {
 	global title authors
-	
+
 	puts {\documentclass[twoside]{article}}
 	puts {\special{papersize=8.5in,11in}  % Letter paper - for `dvips'}
-	#puts {\usepackage[T1]{fontenc}}
-	puts {\usepackage[latin1]{inputenc}}
+	puts {\usepackage[T1]{fontenc}}
+	puts {\usepackage[utf8]{inputenc}}
 	#puts {\input macros.tex}
 
 	puts {\date{\today}}
