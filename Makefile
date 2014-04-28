@@ -33,10 +33,9 @@ CHECKBIW    ?= checkbiw/src/checkbiw
 
 DOC_PDF      = $(DOC_TEX:.tex=.pdf)
 # Use De-TeXed output for the prose analysis, because you
-# may have obsolete text commented out that you do not want to check
-# for flaws
+# may have obsolete text commented out, or PGF commands,
+# that you do not want to check for flaws
 DOC_TXT      = $(DOC_TEX:.tex=.detex)
-DOC_TXT_ADD  = $(DOC_TEX_ADD:.tex=.detex)
 DOC_BASE     = $(DOC_TEX:.tex=)
 
 DOC_CLEAN    = $(DOC_PDF)									\
@@ -76,15 +75,14 @@ clean:
 
 # Points out abbreviations and reminds you of escaping
 # the space after the period
-check-french-spacing:
+check-french-spacing: $(DOC_TXT)
 	$(VERBOSE)export GREP_COLOR='1;32'; \
 	export GREP_OPTIONS='--color=auto'; \
-	grep "[A-Z]\{2,\}\." $(DOC_TXT) $(DOC_TXT_ADD) || \
-	grep -e 'e\.g\.' -e 'i\.e\.' -e 'd\.h\.' $(DOC_TXT) $(DOC_TXT_ADD) || \
+	grep "[A-Z]\{2,\}\." $(DOC_TXT) || \
+	grep -e 'e\.g\.' -e 'i\.e\.' -e 'd\.h\.' $(DOC_TXT) || \
 	true
 
-# check for conformance with "bugs in writing", english only
-checkbiw: $(DOC_TXT) $(DOC_TXT_ADD)
-	$(VERBOSE)$(CHECKBIW) -v -c -d emdash $(DOC_TXT) $(DOC_TXT_ADD)
+# check for conformance with "bugs in writing", English only
+checkbiw: $(DOC_TXT)
+	$(VERBOSE)$(CHECKBIW) -v -c $(DOC_TXT)
 
-# EOF
