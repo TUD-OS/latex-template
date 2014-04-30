@@ -3,7 +3,7 @@ numbers=noenddot,bibliography=totoc,BCOR1.5cm,headsepline,DIV12,%
 appendixprefix,final]{scrreprt}
 
 % You should select either american or british instead of english here:
-\usepackage[ngerman,english]{babel}
+\usepackage[ngerman,ngerman,english]{babel}
 \usepackage{fontspec}
 
 % Font 2
@@ -139,54 +139,18 @@ pdfborder={0.75 0.75 1},plainpages=false,pdfpagelabels=true]{hyperref}
 % use this to generate a list of all todo markers
 % \listoftodos{}
 
-% The intro of the work has to be written in German.
-\selectlanguage{ngerman}
-
-\begin{singlespace}
-
-\subject{{\LARGE Diplomarbeit}}
-
-\title{Dein Titel}
-
-\author{Otto Mustermann}
-
-\publishers{Technische Universität Dresden\\
-Fakultät Informatik\\
-Institut für Systemarchitektur\\
-Professur Betriebssysteme\\
-\begin{minipage}{\textwidth}%\\
-\vskip 6cm
- {\normalsize }\begin{tabular}{ll}
-Betreuender Hochschullehrer: &
-Prof. Dr. rer. nat. Hermann Härtig\tabularnewline
-Betreuender Mitarbeiter: &
-Dipl.-Inf. Dein Betreuer\tabularnewline
-\end{tabular} {\normalsize }\end{minipage}}
-
-\maketitle
-\end{singlespace}
-\newpage
+\input{content/00_title.tex}
 
 \includepdf{images/diplom-aufgabe.pdf}
 \cleardoublepage
 
-\section*{\vfill{} \thispagestyle{empty}
-Erklärung}
-
-Hiermit erkläre ich, dass ich diese Arbeit selbstständig erstellt
-und keine anderen als die angegebenen Hilfsmittel benutzt habe.
-\bigskip{}
-
-\noindent Dresden, den \today % \printdate % if you defined date earlier
-\vspace{2.5cm}
-
-\noindent Otto Mustermann, äöüßÄÖÜ \cleardoublepage{}
+\input{content/01_disclaimer.tex}
 
 % NOTE: if you selected british or american above, change that here too
 \selectlanguage{english}
 
 \begin{abstract}
-\input{content/01_abstract.tex}
+\input{content/02_abstract.tex}
 \end{abstract}
 
 \cleardoublepage
