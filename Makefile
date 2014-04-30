@@ -10,8 +10,7 @@
 DOC_TEX      = diplom.tex
 
 # your sub documents (chapters)
-DOC_TEX_ADD ?= conclusion.tex futurework.tex design.tex evaluation.tex	\
-	       implementation.tex introduction.tex state.tex
+DOC_TEX_ADD ?= $(wildcard content/*.tex)
 
 # your bibtex databases
 DOC_BIB     ?= own.bib
