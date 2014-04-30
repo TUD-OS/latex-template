@@ -12,8 +12,6 @@
   final
 ] {scrreprt}
 
-
-
 % You should select either american or british instead of english here:
 \usepackage[ngerman,english]{babel}
 \usepackage{fontspec}
@@ -44,8 +42,6 @@ pdfborder={0.75 0.75 1},plainpages=false,pdfpagelabels=true]{hyperref}
 %\newcommand{\printdate}{\@date}
 
 \begin{document}
-% use this to generate a list of all todo markers
-% \listoftodos{}
 
 \input{content/00_title.tex}
 
@@ -63,20 +59,20 @@ pdfborder={0.75 0.75 1},plainpages=false,pdfpagelabels=true]{hyperref}
 
 \cleardoublepage
 
-\tableofcontents{}
+\tableofcontents
 
-\listoftables
-\listoffigures
-
-\newpage
-% \begin{center}
-%   This page is intentionally left blank.
-% \end{center}
-% Force LaTeX to really emit an empty page.
-\vspace*{1em}
 \cleardoublepage
 
-%\doublespacing
+% remove this on final
+\listoftodos
+\cleardoublepage
+
+\listoffigures
+\cleardoublepage
+
+\listoftables
+\cleardoublepage
+
 \input{content/10_introduction.tex}
 \input{content/20_state.tex}
 \input{content/30_design.tex}
