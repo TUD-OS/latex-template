@@ -1,44 +1,31 @@
-\documentclass[a4paper,abstract=true,twoside,listof=totoc,%
-numbers=noenddot,bibliography=totoc,BCOR1.5cm,headsepline,DIV12,%
-appendixprefix,final]{scrreprt}
+\documentclass[
+  a4paper,
+  abstract=true,
+  twoside,
+  listof=totoc,
+  numbers=noenddot,
+  bibliography=totoc,
+  BCOR1.5cm,
+  headsepline,
+  DIV12,
+  appendixprefix,
+  final
+] {scrreprt}
+
+
 
 % You should select either american or british instead of english here:
-\usepackage[ngerman,ngerman,english]{babel}
+\usepackage[ngerman,english]{babel}
 \usepackage{fontspec}
 
-% Font 2
-%% Use scalable, PostScript Type 1 versions of the Computer Modern fonts.
-%\usepackage{type1cm}
+\input{preamble/packages.tex}
 
-%% Replace the standard Computer Modern Typewriter font LaTeX uses
-%% for monospace text with the PostScript font Adobe Courier.
-%\usepackage{courier}
-% End-of-Font 2
-
-% BibLaTeX instead of BibTeX
-\usepackage[backend=biber,style=alphabetic,alldates=long]{biblatex}
 \addbibresource{own.bib}
 
 \setcounter{secnumdepth}{3}     % limit enumeration depth
 \setcounter{tocdepth}{1}        % limit TOC depth
- % create subfigures (e.g. Fig. 1a, 1b, 1c ...) in one figure environment:
-\usepackage[it,bf,tight,hang,raggedright]{subfigure}
-\usepackage{varioref}           % nice refs
-\usepackage{graphicx}
-\usepackage{csquotes}
-\usepackage{wrapfig}
-\usepackage{setspace}           % line spacing
-\makeatletter
-\usepackage{array}
-\usepackage{fancybox}           % provide nice boxes
-\usepackage{units}              % unified way of setting values with units
-% apparently breaks KOMA-Script:
-%\usepackage[clearempty]{titlesec}
-\usepackage{listings}           % nice source code listings
-\usepackage{color}
-\usepackage{booktabs}           % nice tables
-\usepackage{microtype}          % better looking text borders
-\usepackage{ellipsis}		% better spacing for ellipsis (...)
+
+
 
 \definecolor{mygreen}{rgb}{0,0.6,0}
 \definecolor{mygray}{rgb}{0.5,0.5,0.5}
@@ -76,10 +63,6 @@ appendixprefix,final]{scrreprt}
 
 \pagenumbering{Roman}
 
-\usepackage{fancyvrb}           % algorithm-boxes
-\usepackage{color}
-\usepackage{pdfpages}
-
 % remove "pagebackref" for the final version
 \usepackage[pdftex,
 citebordercolor={0.75 0.75 1},
@@ -94,15 +77,6 @@ pdfborder={0.75 0.75 1},plainpages=false,pdfpagelabels=true]{hyperref}
   pdfkeywords={foo, bar},
 }
 
-\usepackage{hyphenat}
-% custom hyphenation
-%\hyphenation{cSCAN SCAN SSTF SATF FIFO in-te-res-siert}
-%\lefthyphenmin=3
-%\righthyphenmax=3
-
-% instead of sloppy
-%\tolerance 1414
-%\hbadness 1414
 \tolerance 2414
 \hbadness 2414
 \emergencystretch 1.5em
@@ -115,20 +89,13 @@ pdfborder={0.75 0.75 1},plainpages=false,pdfpagelabels=true]{hyperref}
 % use nice footnote indentation
 \deffootnote[1em]{1em}{1em}{\textsuperscript{\thefootnotemark}\,}
 
-\usepackage{todonotes}
-
-\usepackage{xspace}
-
-% use this one last
-% (redefines some macros for compatibility with KOMAScript)
-\usepackage{scrhack}
-
 % some common commands
 \newcommand{\drops}{\texorpdfstring{\textsc{Drops}\xspace}{DROPS}}
 \newcommand{\LLinux}{\texorpdfstring{L$\!^4$Linux}{L4Linux}}
 
 \newcommand{\NOVA}{NOVA\xspace}
 \newcommand{\QEMU}{QEMU\xspace}
+
 
 % If you know when you will hand in your thesis, enter the date here.
 %\date{30. April 2009}

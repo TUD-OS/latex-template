@@ -10,7 +10,8 @@
 DOC_TEX      = diplom.tex
 
 # your sub documents (chapters)
-DOC_TEX_ADD ?= $(wildcard content/*.tex)
+DOC_TEX_ADD ?= preamble/packages.tex \
+               $(wildcard content/*.tex)
 
 # your bibtex databases
 DOC_BIB     ?= own.bib
