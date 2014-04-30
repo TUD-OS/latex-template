@@ -11,6 +11,9 @@ DOC_TEX      = diplom.tex
 
 # your sub documents (chapters)
 DOC_TEX_ADD ?= preamble/packages.tex \
+               preamble/style.tex \
+               preamble/color.tex \
+               preamble/newcommands.tex \
                $(wildcard content/*.tex)
 
 # your bibtex databases
