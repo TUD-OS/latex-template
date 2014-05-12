@@ -35,13 +35,13 @@ pdfborder={0.75 0.75 1},plainpages=false,pdfpagelabels=true]{hyperref}
 \input{preamble/style.tex}
 \input{preamble/newcommands.tex}
 
-\pagenumbering{Roman}
-
 % If you know when you will hand in your thesis, enter the date here.
 %\date{30. April 2009}
 %\newcommand{\printdate}{\@date}
 
 \begin{document}
+
+\pagenumbering{Roman}
 
 \input{content/00_title.tex}
 
@@ -73,6 +73,7 @@ pdfborder={0.75 0.75 1},plainpages=false,pdfpagelabels=true]{hyperref}
 \listoftables
 \cleardoublepage
 
+\pagenumbering{arabic}
 \input{content/10_introduction.tex}
 \input{content/20_state.tex}
 \input{content/30_design.tex}
