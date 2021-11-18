@@ -1,3 +1,5 @@
+[![Build](https://github.com/TUD-OS/latex-template/actions/workflows/build.yml/badge.svg)](https://github.com/TUD-OS/latex-template/actions/workflows/build.yml)
+
 Was ist das?
 ============
 

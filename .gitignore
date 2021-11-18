@@ -23,7 +23,7 @@ auto
 *~
 
 *.bcf
-*.pdf
+diplom.pdf
 *.run.xml
 *.synctex.gz
 
@@ -31,3 +31,5 @@ auto
 *.swp
 *.swo
 
+# Nix result links
+/result*
