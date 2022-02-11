@@ -24,6 +24,15 @@ $ sudo apt install texlive-base \
    texlive-latex-extra   
 ```
 
+Additionally, please install also: 
+```shell
+$ sudo apt install \
+  `# for the `make checkbiw` script`
+  diction \
+  `# build system to build the latex project`
+  latexmk
+```
+
 So geht's los
 ==============
 
@@ -43,6 +52,13 @@ An diesen Punkt sollte `make` ein `diplom.pdf` produzieren.
 Das Template unterstützt sowohl englischen und deutschen Text. Englisch ist
 standardmäßig eingestellt. Für deutschen Text kann der letzte `\selectlanguage`
 Aufruf in `diplom.tex` einfach weggelassen werden.
+
+How To Build
+============
+- `make`: regular build
+- `make watch`: Performs a watch task, i.e. automatically re-builds everything quickly on changes.
+   If your PDF viewer supports automatic reload on file changes (such as the default PDF viewer in GNOME)
+   you get a cool productive working environment.
 
 Grafiken einbinden
 ==================

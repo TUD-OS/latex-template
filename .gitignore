@@ -6,7 +6,6 @@ auto
 *.blg
 *.brf
 *.lod
-*.log
 *.lof
 *.out
 *.acn
@@ -21,6 +20,8 @@ auto
 *.toc
 .sconsign.dblite
 *~
+*.fdb_latexmk
+*.fls
 *.tdo
 
 *.bcf
@@ -34,3 +35,6 @@ diplom.pdf
 
 # Nix result links
 /result*
+
+# "make" produces PDFs in this format.
+/*DRAFT*.pdf
