@@ -47,3 +47,33 @@
 
 % use nice footnote indentation
 \deffootnote[1em]{1em}{1em}{\textsuperscript{\thefootnotemark}\,}
+
+% ########################################################
+
+% - Roman/Serif font for all headings.
+%   Default is sans-serif which looks kind of unprofessional with the default font family.
+% - Packages like titlesec don't work well together with KOMA
+% - "disposition" means, that this setting is for all headings (chapter level, section level, ...)
+%   see: https://mirror.physik.tu-berlin.de/pub/CTAN/macros/latex/contrib/koma-script/doc/scrguide.pdf
+\addtokomafont{disposition}{\rmfamily}
+
+% ########################################################
+% With the fancyhdr package we can let all pages look more professional.
+% Each page (except for special ones such as chapters or the cover) will contain a
+% header that looks like this:
+%
+% Chapter %NUM%. %CHAPTER_NAME%                                                      3/10
+% ---------------------------------------------------------------------------------------
+\pagestyle{fancy}% muss vor \renewcommand{\sectionmark} stehen
+% Reset all styles
+\fancyhf{}
+% Show the chapter name
+% even left, odd left: Put the chapter name always on the top left.
+% Content behind "\leftmark" can get configured. See package documentation.
+% By default it produces: "Chapter %NUM%. %CHAPTER NAME%"
+\fancyhead[EL,OL]{\leftmark}
+% Page number on the right in the fancy header line.
+% Label "LastPage" works because of the "lastpage" package
+\fancyhead[ER,OR]{\thepage~/~\pageref{LastPage}}
+% Page number on the bottom
+\fancyfoot[EC,OC]{\thepage}
