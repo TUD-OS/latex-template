@@ -86,6 +86,10 @@ einige Hintergrundinformationen.
   *"Set A contains elements a, b, and c."*
 - more stylistic information can be found in *Bugs in writing* (BIW)
   by Lyn Dupré
+- add chapters without a chapter number (e.g. appendix) with `\addchap{Chapter without Number}`
+  instead of `\chapter*{Chapter without Number}`. Otherwise, `\chaptername` and similar macros
+  inherit the name of the last chapter with a number in several cases.
+  `\addchap` is a macro provided by KOMA
 
 
 spezielle Tipps von Frank
