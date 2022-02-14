@@ -56,7 +56,7 @@ einige Hintergrundinformationen.
 - use biblatex for references, it pays off fast
 - convert images to correct include types (vector formats, e.g. PDF)
 - protected spaces between, e.g., `Figure~1`, `~\cite{xyz}`
-- units: use the `units` package to typeset units
+- units: use the `siunitx` package to typeset units
 - French spacing: tell latex what is an end of sentence with `\@.`
   where it cannot know it (e.g., `This is a sentence ending on an
   abbreviation BASIC\@.  Next sentence.`)
