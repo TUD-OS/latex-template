@@ -12,7 +12,7 @@ In order to use the `$ make checkbiw` script please execute: `git submodule upda
 
 Build Prerequisites
 ===================
-In case you don't want to install `texlive-full` to save disk space, the following packages are 
+In case you don't want to install `texlive-full` to save disk space, the following packages are
 actually required: \
 ```shell
 $ sudo apt install texlive-base \
@@ -25,10 +25,10 @@ $ sudo apt install texlive-base \
    biber \
    texlive-bibtex-extra \
    `# for csquotes` \
-   texlive-latex-extra   
+   texlive-latex-extra
 ```
 
-Additionally, please install also: 
+Additionally, please install also:
 ```shell
 $ sudo apt install \
   `# for the `make checkbiw` script`
@@ -110,6 +110,9 @@ einige Hintergrundinformationen.
   instead of `\chapter*{Chapter without Number}`. Otherwise, `\chaptername` and similar macros
   inherit the name of the last chapter with a number in several cases.
   `\addchap` is a macro provided by KOMA
+- this project uses a `.editorconfig` which makes sure you have the same basic formatting
+  settings across IDEs **as you type**. Support exists in Clion, VS Code, IntelliJ,
+  vim, ... make sure to activate the setting or add the plugin for that into your IDE/editor
 
 
 spezielle Tipps von Frank
