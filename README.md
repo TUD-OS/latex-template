@@ -6,6 +6,24 @@ Was ist das?
 Dieses Diplomarbeits-Latex-Template stellt ein Skelett für eine
 Diplomarbeit mit zugehöriger Make-Datei zur Verfügung.
 
+Build Prerequisites
+===================
+In case you don't want to install `texlive-full` to save disk space, the following packages are 
+actually required: \
+```shell
+$ sudo apt install texlive-base \
+   texlive-lang-german \
+   texlive-lang-english \
+   `# for siunits` \
+   texlive-science \
+   texlive-luatex \
+   `# biber gets invoked by the utilities provided by bibtex-extra` \
+   biber \
+   texlive-bibtex-extra \
+   `# for csquotes` \
+   texlive-latex-extra   
+```
+
 So geht's los
 ==============
 

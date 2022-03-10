@@ -21,6 +21,7 @@ auto
 *.toc
 .sconsign.dblite
 *~
+*.tdo
 
 *.bcf
 diplom.pdf
