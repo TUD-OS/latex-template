@@ -63,17 +63,25 @@
 % header that looks like this:
 %
 % Chapter %NUM%. %CHAPTER_NAME%                                                      3/10
-% ---------------------------------------------------------------------------------------
-\pagestyle{fancy}% muss vor \renewcommand{\sectionmark} stehen
-% Reset all styles
+%
+% On even pages the page number is on the left, on odd pages the page number is on the right.
+%
+\pagestyle{fancy}
+% Reset all existing header styles
 \fancyhf{}
-% Show the chapter name
-% even left, odd left: Put the chapter name always on the top left.
-% Content behind "\leftmark" can get configured. See package documentation.
-% By default it produces: "Chapter %NUM%. %CHAPTER NAME%"
-\fancyhead[EL,OL]{\leftmark}
-% Page number on the right in the fancy header line.
-% Label "LastPage" works because of the "lastpage" package
-\fancyhead[ER,OR]{\thepage~/~\pageref{LastPage}}
-% Page number on the bottom
-\fancyfoot[EC,OC]{\thepage}
+
+% Even pages (Ex)
+% EL: even left: show page number
+\fancyhead[EL]{\thepage~/~\pageref{LastPage}}
+% ER: even right: show chapter
+\fancyhead[ER]{\leftmark}
+
+% Odd pages (Ox)
+% OL: odd left: show page number
+\fancyhead[OR]{\thepage~/~\pageref{LastPage}}
+% OR: odd right: show chapter
+\fancyhead[OL]{\rightmark}
+
+
+% Additionally page number always on the bottom
+% \fancyfoot[EC,OC]{\thepage}
