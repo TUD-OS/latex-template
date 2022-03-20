@@ -26,3 +26,21 @@ jobs:
                     latexmk_use_lualatex: true
                     # required when using the "minted" package for beautiful styled code
                     # latexmk_shell_escape: true
+
+    # checkbiw and check-french-spacing must execute without error
+    check_scripts:
+        runs-on: ubuntu-latest
+        steps:
+            -   name: Set up Git repository
+                uses: actions/checkout@v2
+                # additionally: check out submodules
+                with:
+                    submodules: recursive
+            -   name: install make
+                run: sudo apt update && sudo apt install make
+            -   name: make check-french-spacing
+                run: make check-french-spacing
+            -   name: install diction
+                run: sudo apt update && sudo apt install diction
+            -   name: make checkbiw
+                run: make checkbiw
