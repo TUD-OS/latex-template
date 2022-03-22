@@ -6,6 +6,10 @@ Was ist das?
 Dieses Diplomarbeits-Latex-Template stellt ein Skelett für eine
 Diplomarbeit mit zugehöriger Make-Datei zur Verfügung.
 
+Checkout Submodules First
+===================
+In order to use the `$ make checkbiw` script please execute: `git submodule update --init --recursive`
+
 Build Prerequisites
 ===================
 In case you don't want to install `texlive-full` to save disk space, the following packages are 
