@@ -2,6 +2,14 @@
 % Without "maxbibnames=99" the bibliography entries only contain "First Name et al."
 \usepackage[backend=biber,style=alphabetic,alldates=long,maxbibnames=99]{biblatex}
 
+% FONT SETTINGS & ENCODING
+% By default this build setup uses lualatex which supports special characters
+% (öäüß<>) out of the box. If you ever want to switch to pdflatex but also
+% keep the support for lualatex, add these three packages:
+% \usepackage[T1]{fontenc}
+% \usepackage[utf8]{luainputenc}
+% \usepackage{lmodern}
+
 \usepackage{varioref}           % nice refs
 \usepackage{csquotes}
 \usepackage{graphicx}           % graphics
