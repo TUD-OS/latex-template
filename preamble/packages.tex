@@ -1,10 +1,22 @@
-\usepackage[backend=biber,style=alphabetic,alldates=long]{biblatex}
+% You can choose style "numeric" instead which is common in many papers.
+% Without "maxbibnames=99" the bibliography entries only contain "First Name et al."
+\usepackage[backend=biber,style=alphabetic,alldates=long,maxbibnames=99]{biblatex}
+
+% FONT SETTINGS & ENCODING
+% By default this build setup uses lualatex which supports special characters
+% (öäüß<>) out of the box. If you ever want to switch to pdflatex but also
+% keep the support for lualatex, add these three packages:
+% \usepackage[T1]{fontenc}
+% \usepackage[utf8]{luainputenc}
+% \usepackage{lmodern}
 
 \usepackage[nospace]{varioref}           % nice refs
 \usepackage{csquotes}
 \usepackage{graphicx}           % graphics
 \usepackage{caption}            % manipulate fugures
 \usepackage{subcaption}         % allow for subfigures
+% Also checkout "minted" instead of "listings" - looks much nicer and supports
+% more languages but requires "pygmentize" to be available on the command line
 \usepackage{listings}           % nice source code listings
 \usepackage{xcolor}
 \usepackage{booktabs}           % nice tables
@@ -18,6 +30,9 @@
 \usepackage{todonotes}
 \usepackage{xspace}
 \usepackage{setspace}
+\usepackage{fancyhdr}           % enables cool header line and footer line manipulations
+\usepackage{lastpage}           % enables the usage of the label "LastPage" to get the
+                                % number of pages with \pageref{LastPage}
 
 % use this one last
 % (redefines some macros for compatibility with KOMAScript)

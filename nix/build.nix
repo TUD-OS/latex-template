@@ -1,21 +1,33 @@
 { stdenvNoCC, gitignoreSource, texlive }:
 
-stdenvNoCC.mkDerivation {
+let
+  tex = texlive.combine {
+    inherit (texlive) scheme-small
+      biber
+      biblatex
+      csquotes
+      hyphenat
+      lastpage
+      latexmk
+      siunitx
+      todonotes
+      xpatch;
+  };
+in stdenvNoCC.mkDerivation {
   pname = "latex-template";
   version = "1.0.0";
 
-  src = gitignoreSource ../.; 
+  src = gitignoreSource ../.;
 
   nativeBuildInputs = [
-    # This can probably be stripped down.
-    texlive.combined.scheme-full
+    tex
   ];
 
   doConfigure = false;
 
   # Avoid luatex failing due to non-writable cache.
   TEXMFVAR = "/tmp/texlive/";
-  
+
   buildPhase = ''
     make
   '';

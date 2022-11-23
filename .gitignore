@@ -6,7 +6,6 @@ auto
 *.blg
 *.brf
 *.lod
-*.log
 *.lof
 *.out
 *.acn
@@ -21,9 +20,14 @@ auto
 *.toc
 .sconsign.dblite
 *~
+*.fdb_latexmk
+*.fls
+*.tdo
 
 *.bcf
 diplom.pdf
+# comes from the "make stats" command
+diplom.pdf.txt
 *.run.xml
 *.synctex.gz
 
@@ -33,3 +37,7 @@ diplom.pdf
 
 # Nix result links
 /result*
+
+# "make" produces PDFs in this format.
+/*DRAFT*.pdf
+

@@ -1,91 +1,95 @@
 ######################################################################
 # This Makefile is part of a skeleton (diploma) thesis.  If you have
-# useful additions or suggestions, please feel free to contact me:
-# Martin Unzner <munzner@os.inf.tu-dresden.de>
-# or alternatively
-# Julian Stecklina <jsteckli@os.inf.tu-dresden.de>
+# useful additions, suggestions or questions, please feel free to issue a
+# PR or an issue at https://github.com/TUD-OS/latex-template
 ######################################################################
 
-# your main document
-DOC_TEX      = diplom.tex
+# main document
+DOC_TEX     		= diplom.tex
+# sub documents (chapters) without preamble
+# (because we do not need checkbiw on the preamble).
+DOC_TEX_ADD 		= $(wildcard content/*.tex)
+# All Tex-files sorted alphabetically and concatenated to a single string.
+# (make's shell utility converts newlines to spaces)
+# This makes the "checkbiw"-script more convenient.
+DOC_TEX_ALL_SORTED 	= $(shell echo $(DOC_TEX) $(DOC_TEX_ADD) | tr ' ' '\n' | sort)
 
-# your sub documents (chapters)
-DOC_TEX_ADD ?= preamble/packages.tex \
-               preamble/style.tex \
-               preamble/color.tex \
-               preamble/newcommands.tex \
-               $(wildcard content/*.tex)
+DOC_PDF     		= $(DOC_TEX:.tex=.pdf)
 
-# your bibtex databases
-DOC_BIB     ?= own.bib
+LATEXMK              	= latexmk
+# Add "-shell-escape" when you use "minted" instead of "listings" for beautiful code listings
+LATEXMK_COMMON_FLAGS	= -pdf -use-make
+LATEXMK_FLAGS			= $(LATEXMK_COMMON_FLAGS) -pdflatex=lualatex -halt-on-error
+LATEXMK_WATCH_FLAGS		= $(LATEXMK_COMMON_FLAGS) -pvc -quiet -f -pdflatex="lualatex -synctex=1 -interaction=nonstopmode"
 
-# images
-DOC_IMG_JPG  = images/squirrel.jpg # you can specify multiple images here
-DOC_IMG_PNG  =
-DOC_IMG_PDF  = images/diplom-aufgabe.pdf
+# Path to 'checkbiw'-script.
+# Do not forget to execute `git submodule update --init` first.
+CHECKBIW = checkbiw/src/checkbiw
 
-# latex stuff
-LUALATEX    ?= lualatex --synctex=1
-BIBER       ?= biber
-DETEX       ?= detex
-CHECKBIW    ?= checkbiw/src/checkbiw
+# The @-symbol makes the commands quite, i.e., make does not
+# output the commands it executes.
+QUIET = @
 
-######################################################################
-# You should not need to adapt stuff below this line ...
-######################################################################
-
-DOC_PDF      = $(DOC_TEX:.tex=.pdf)
-# Use De-TeXed output for the prose analysis, because you
-# may have obsolete text commented out, or PGF commands,
-# that you do not want to check for flaws
-DOC_TXT      = $(DOC_TEX:.tex=.detex)
-DOC_BASE     = $(DOC_TEX:.tex=)
-
-DOC_CLEAN    = $(DOC_PDF)									\
-               $(DOC_BASE).{aux,log,toc,bcf,bbl,blg,ltf,brf,out} \
-			   $(DOC_BASE).{lof,nav,snm,acn,glo,ist,lot,run.xml} \
-			   $(DOC_BASE).{synctex,synctex.gz} \
-               $(DOC_TXT) $(DOC_TXT_ADD) \
-               *~
-
-VERBOSE = @
-
-.PHONY: default pdf clean check-french-spacing checkbiw
+.PHONY: default pdf clean check-french-spacing checkbiw stats watch
 
 default: pdf
 
-$(DOC_PDF): $(DOC_TEX) $(DOC_TEX_ADD) $(DOC_BIB) $(DOC_IMG_JPG)		\
-            $(DOC_IMG_PNG) $(DOC_IMG_PNG) $(DOC_IMG_PDF) Makefile
-	$(VERBOSE)$(LUALATEX) $(DOC_TEX) || \
-	    ((grep 'TeX capacity exceeded' $(DOC_PDF:.pdf=.log) && \
-	   echo -e "\n\033[31mIncrease pool_size to 200000 in" \
-	           "/etc/texmf/texmf.cnf!\033[m\n" && false) || false)
-	$(VERBOSE)[ -f $(DOC_BASE).bcf ] && \
-	  $(BIBER) $(DOC_BASE).bcf
-	$(VERBOSE)(export size=1 ; touch $(DOC_PDF);\
-	  until [ $$size -eq `ls -o $(DOC_PDF) | awk '{print $$4}'` ]; do\
-	    export size=`ls -o $(DOC_PDF) | awk '{print $$4}'` ;\
-	    $(LUALATEX) $(DOC_TEX) ;\
-	  done)
+# Builds the PDF and creates a file with the format: "yyyy-MM-dd DRAFT Diplomarbeit - Branch <current branch>.pdf"
+# Is not dependent on anything because latexmk should figure out by itself if everything is fresh.
+pdf:
+	$(LATEXMK) $(LATEXMK_FLAGS) $(DOC_TEX)
+	cp $(DOC_PDF) "$(shell date +\"%Y-%m-%d_%H%M%S\") DRAFT Diplomarbeit - Branch $(shell git rev-parse --abbrev-ref HEAD).pdf"
 
-$(DOC_TXT): $(DOC_TEX) $(DOC_TEX_ADD)
-	$(DETEX) $(DOC_TEX) > $(DOC_TXT)
+# Performs a watch task, i.e. automatically re-builds everything quickly on changes.
+# If your PDF viewer supports a reload on file changes (such as the default PDF viewer in GNOME)
+# you get a cool productive working environment.
+#
+# The dependency to "pdf" exists only that in case something doesn't build from the beginning
+# the build immediately stops.
+#
+# Also see: https://paulklemm.com/blog/2016-03-06-watch-latex-documents-using-latexmk/
+watch: pdf
+	$(LATEXMK) $(LATEXMK_WATCH_FLAGS) $(DOC_TEX)
 
-pdf: $(DOC_PDF)
-
+# Cleans all intermediate files except for the produced pdf files.
 clean:
-	rm -f $(DOC_CLEAN)
+	$(LATEXMK) -C
+	$(QUIET)# latexmk does not clean up the aux-files produced by the chapters.
+	$(QUIET)# They are stand-alone compilation units with a dedicated aux file.
+	$(QUIET)# This comes because we include them with "\include" instead of "\input".
+	find "./content" -type f -name "*.aux" | xargs -r rm
+	$(QUIET)# Cleanup of "minted" package (if you use it - not included by default)
+	$(QUIET)# find "./content" -type f -name "_minted*" | xargs -r rm -rf
+	$(QUIET)# Produced by the 'make stats' target
+	$(QUIET)rm -f diplom.pdf.txt
 
 # Points out abbreviations and reminds you of escaping
 # the space after the period
-check-french-spacing: $(DOC_TEX) $(DOC_TEX_ADD)
-	$(VERBOSE)export GREP_COLOR='1;32'; \
-	export GREP_OPTIONS='--color=auto'; \
-	grep "[A-Z]\{2,\}\." $(DOC_TEX) $(DOC_TEX_ADD) || \
-	grep -e 'e\.g\.' -e 'i\.e\.' -e 'd\.h\.' $(DOC_TEX) $(DOC_TEX_ADD) || \
+check-french-spacing: $(DOC_TEX_ALL_SORTED)
+	$(QUIET)export GREP_COLOR='1;32'; \
+	grep --color=auto "[A-Z]\(2,\)\." $+ || \
+	grep --color=auto -e 'e\.g\.' -e 'i\.e\.' -e 'd\.h\.' $+ || \
 	true
 
 # check for conformance with "bugs in writing", English only
-checkbiw: $(DOC_TXT)
-	$(VERBOSE)$(CHECKBIW) -v -c $(DOC_TXT)
+checkbiw: $(DOC_TEX_ALL_SORTED)
+	$(QUIET)$(CHECKBIW) -v -c $+
 
+
+CMD_COUNT_PAGES = pdfinfo $(DOC_PDF) | awk '/^Pages:/ {print $$2}'
+CMD_COUNT_WORDS = pdftotext $(DOC_PDF) $(DOC_PDF:.pdf=.pdf.txt) && cat $(DOC_PDF:.pdf=.pdf.txt) | grep -E '^\.+\ *$$' -v | wc -w
+
+stats: pdf
+	$(QUIET)echo "\e[1mThesis Stats:\e[0m"
+	$(QUIET)echo "  \e[1mdetexed sources and removed empty lines:\e[0m"
+	$(QUIET)echo "    lines:      $(shell detex $(DOC_TEX_ALL_SORTED) | sed '/^$$/d' | wc -l)"
+	$(QUIET)echo "    words:      $(shell detex $(DOC_TEX_ALL_SORTED) | sed '/^$$/d' | wc -w)"
+	$(QUIET)echo "    characters: $(shell detex $(DOC_TEX_ALL_SORTED) | sed '/^$$/d' | wc --chars)"
+	$(QUIET)echo
+	$(QUIET)echo "    Please note: There are possibly deviations compared to the final PDF as the compiled"
+	$(QUIET)echo "                 version might contain additional words, such as 'in Figure 3.5 on the"
+	$(QUIET)echo "                 next page' or the bibliography."
+	$(QUIET)echo
+	$(QUIET)echo "  \e[1mCompiled PDF:\e[0m"
+	$(QUIET)echo "    pages: $(shell $(CMD_COUNT_PAGES)) (in total)"
+	$(QUIET)echo "    words: $(shell $(CMD_COUNT_WORDS)) (roughly)"
