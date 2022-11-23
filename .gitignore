@@ -26,6 +26,8 @@ auto
 
 *.bcf
 diplom.pdf
+# comes from the "make stats" command
+diplom.pdf.txt
 *.run.xml
 *.synctex.gz
 
@@ -38,3 +40,4 @@ diplom.pdf
 
 # "make" produces PDFs in this format.
 /*DRAFT*.pdf
+

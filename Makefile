@@ -30,11 +30,12 @@ CHECKBIW = checkbiw/src/checkbiw
 # output the commands it executes.
 QUIET = @
 
-.PHONY: default pdf clean check-french-spacing checkbiw watch
+.PHONY: default pdf clean check-french-spacing checkbiw stats watch
 
 default: pdf
 
 # Builds the PDF and creates a file with the format: "yyyy-MM-dd DRAFT Diplomarbeit - Branch <current branch>.pdf"
+# Is not dependent on anything because latexmk should figure out by itself if everything is fresh.
 pdf:
 	$(LATEXMK) $(LATEXMK_FLAGS) $(DOC_TEX)
 	cp $(DOC_PDF) "$(shell date +\"%Y-%m-%d_%H%M%S\") DRAFT Diplomarbeit - Branch $(shell git rev-parse --abbrev-ref HEAD).pdf"
@@ -53,12 +54,14 @@ watch: pdf
 # Cleans all intermediate files except for the produced pdf files.
 clean:
 	$(LATEXMK) -C
-	# latexmk does not clean up the aux-files produced by the chapters.
-	# They are stand-alone compilation units with a dedicated aux file.
-	# This comes because we include them with "\include" instead of "\input".
+	$(QUIET)# latexmk does not clean up the aux-files produced by the chapters.
+	$(QUIET)# They are stand-alone compilation units with a dedicated aux file.
+	$(QUIET)# This comes because we include them with "\include" instead of "\input".
 	find "./content" -type f -name "*.aux" | xargs -r rm
 	$(QUIET)# Cleanup of "minted" package (if you use it - not included by default)
 	$(QUIET)# find "./content" -type f -name "_minted*" | xargs -r rm -rf
+	$(QUIET)# Produced by the 'make stats' target
+	$(QUIET)rm -f diplom.pdf.txt
 
 # Points out abbreviations and reminds you of escaping
 # the space after the period
@@ -72,3 +75,21 @@ check-french-spacing: $(DOC_TEX_ALL_SORTED)
 checkbiw: $(DOC_TEX_ALL_SORTED)
 	$(QUIET)$(CHECKBIW) -v -c $+
 
+
+CMD_COUNT_PAGES = pdfinfo $(DOC_PDF) | awk '/^Pages:/ {print $$2}'
+CMD_COUNT_WORDS = pdftotext $(DOC_PDF) $(DOC_PDF:.pdf=.pdf.txt) && cat $(DOC_PDF:.pdf=.pdf.txt) | grep -E '^\.+\ *$$' -v | wc -w
+
+stats: pdf
+	$(QUIET)echo "\e[1mThesis Stats:\e[0m"
+	$(QUIET)echo "  \e[1mdetexed sources and removed empty lines:\e[0m"
+	$(QUIET)echo "    lines:      $(shell detex $(DOC_TEX_ALL_SORTED) | sed '/^$$/d' | wc -l)"
+	$(QUIET)echo "    words:      $(shell detex $(DOC_TEX_ALL_SORTED) | sed '/^$$/d' | wc -w)"
+	$(QUIET)echo "    characters: $(shell detex $(DOC_TEX_ALL_SORTED) | sed '/^$$/d' | wc --chars)"
+	$(QUIET)echo
+	$(QUIET)echo "    Please note: There are possibly deviations compared to the final PDF as the compiled"
+	$(QUIET)echo "                 version might contain additional words, such as 'in Figure 3.5 on the"
+	$(QUIET)echo "                 next page' or the bibliography."
+	$(QUIET)echo
+	$(QUIET)echo "  \e[1mCompiled PDF:\e[0m"
+	$(QUIET)echo "    pages: $(shell $(CMD_COUNT_PAGES)) (in total)"
+	$(QUIET)echo "    words: $(shell $(CMD_COUNT_WORDS)) (roughly)"
