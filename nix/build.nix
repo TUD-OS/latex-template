@@ -27,6 +27,7 @@ in stdenvNoCC.mkDerivation {
 
   # Avoid luatex failing due to non-writable cache.
   TEXMFVAR = "/tmp/texlive/";
+  TEXTMFHOME = "/tmp/texlive/";
 
   buildPhase = ''
     make
