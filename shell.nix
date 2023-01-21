@@ -15,6 +15,6 @@ pkgs.mkShell {
   ];
 
   inputsFrom = [
-    thisPackage
+    thisPackage.pdf
   ];
 }

@@ -1,1 +1,1 @@
-import ./nix/release.nix
+(import ./nix/release.nix {}).pdf

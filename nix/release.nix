@@ -5,7 +5,9 @@ let
   tex = import ./tex-toolchain.nix { inherit pkgs; };
   inherit (import sources."gitignore.nix" { inherit (pkgs) lib; }) gitignoreSource;
 in
-pkgs.callPackage ./build.nix {
-  inherit gitignoreSource;
-  inherit tex;
+{
+  pdf = pkgs.callPackage ./build.nix {
+    inherit gitignoreSource;
+    inherit tex;
+  };
 }
