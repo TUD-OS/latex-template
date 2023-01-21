@@ -8,7 +8,32 @@ Diplomarbeit mit zugehöriger Make-Datei zur Verfügung.
 ## Checkout Submodules First
 In order to use the `$ make checkbiw` script please execute: `git submodule update --init --recursive`
 
-## Build Prerequisites (Regular Build)
+## So geht's los
+
+Als erstes solltest du in diplom.tex alle Vorkommen von Otto
+Mustermann, "Dein Titel" und "Dein Betreuer" ersetzen.
+
+`diplom.tex` will deine Aufgabe als PDF einbinden. Es sucht
+`images/diplom-aufgabe.pdf`, was eine A4 Seite sein muss. Mit
+
+    convert <dein-gescanntes-bild> diplom-aufgabe.pdf
+
+solltest du eine beliebige Bilddatei in ein PDF umwandeln können, wenn
+ImageMagick auf deinem System installiert ist.
+
+An diesen Punkt sollte `make` ein `diplom.pdf` produzieren.
+
+Das Template unterstützt sowohl englischen und deutschen Text. Englisch ist
+standardmäßig eingestellt. Für deutschen Text kann der letzte `\selectlanguage`
+Aufruf in `diplom.tex` einfach weggelassen werden.
+
+## How To Build
+- `$ make`: regular build that produces `diplom.pdf` and `yyyy-mm-dd_hhmmss DRAFT Diplomarbeit - Branch <branch>.pdf`.
+- `$ make watch`: Performs a watch task, i.e. automatically re-builds everything quickly on changes.
+   If your PDF viewer supports automatic reload on file changes (such as the default PDF viewer in GNOME)
+   you get a cool productive working environment.
+
+### Build Prerequisites (Regular Build)
 In case you don't want to install `texlive-full` to save disk space, the following packages are
 actually required: \
 ```shell
@@ -34,30 +59,15 @@ $ sudo apt install \
   latexmk
 ```
 
-## So geht's los
-
-Als erstes solltest du in diplom.tex alle Vorkommen von Otto
-Mustermann, "Dein Titel" und "Dein Betreuer" ersetzen.
-
-`diplom.tex` will deine Aufgabe als PDF einbinden. Es sucht
-`images/diplom-aufgabe.pdf`, was eine A4 Seite sein muss. Mit
-
-    convert <dein-gescanntes-bild> diplom-aufgabe.pdf
-
-solltest du eine beliebige Bilddatei in ein PDF umwandeln können, wenn
-ImageMagick auf deinem System installiert ist.
-
-An diesen Punkt sollte `make` ein `diplom.pdf` produzieren.
-
-Das Template unterstützt sowohl englischen und deutschen Text. Englisch ist
-standardmäßig eingestellt. Für deutschen Text kann der letzte `\selectlanguage`
-Aufruf in `diplom.tex` einfach weggelassen werden.
-
-## How To Build
-- `make`: regular build
-- `make watch`: Performs a watch task, i.e. automatically re-builds everything quickly on changes.
-   If your PDF viewer supports automatic reload on file changes (such as the default PDF viewer in GNOME)
-   you get a cool productive working environment.
+### Build Prerequisites (Nix Build)
+This template can also be built using [Nix](https://nixos.org/download.html). You have
+the option to either use `$ nix-build`, which will produce `result/diplom.pdf`, or to
+use
+```bash
+$ nix-shell
+$ make clean
+$ make watch # (or just make)
+```
 
 ## Grafiken einbinden
 
