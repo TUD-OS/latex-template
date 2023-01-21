@@ -1,4 +1,4 @@
-{ stdenvNoCC, gitignoreSource, tex }:
+{ stdenvNoCC, gitignoreSource, tex, gnumake }:
 
 stdenvNoCC.mkDerivation {
   pname = "latex-template";
@@ -7,6 +7,7 @@ stdenvNoCC.mkDerivation {
   src = gitignoreSource ../.;
 
   nativeBuildInputs = [
+    gnumake
     tex
   ];
 
@@ -15,10 +16,6 @@ stdenvNoCC.mkDerivation {
   # Avoid luatex failing due to non-writable cache.
   TEXMFVAR = "/tmp/texlive/";
   TEXTMFHOME = "/tmp/texlive/";
-
-  buildPhase = ''
-    make
-  '';
 
   installPhase = ''
     mkdir -p $out
