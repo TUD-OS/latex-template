@@ -6,7 +6,9 @@ Dieses Diplomarbeits-Latex-Template stellt ein Skelett für eine
 Diplomarbeit mit zugehöriger Make-Datei zur Verfügung.
 
 ## Checkout Submodules First
-In order to use the `$ make checkbiw` script please execute: `git submodule update --init --recursive`
+
+Um das `$ make checkbiw` ausführen zu können, musst du zuerst die
+Submodule auschecken: `git submodule update --init --recursive`
 
 ## So geht's los
 
@@ -28,14 +30,17 @@ standardmäßig eingestellt. Für deutschen Text kann der letzte `\selectlanguag
 Aufruf in `diplom.tex` einfach weggelassen werden.
 
 ## How To Build
+
 - `$ make`: regular build that produces `diplom.pdf` and `yyyy-mm-dd_hhmmss DRAFT Diplomarbeit - Branch <branch>.pdf`.
 - `$ make watch`: Performs a watch task, i.e. automatically re-builds everything quickly on changes.
    If your PDF viewer supports automatic reload on file changes (such as the default PDF viewer in GNOME)
    you get a cool productive working environment.
 
 ### Build Prerequisites (Regular Build)
+
 In case you don't want to install `texlive-full` to save disk space, the following packages are
 actually required: \
+
 ```shell
 $ sudo apt install texlive-base \
    texlive-lang-german \
@@ -51,6 +56,7 @@ $ sudo apt install texlive-base \
 ```
 
 Additionally, please install also:
+
 ```shell
 $ sudo apt install \
   `# for the `make checkbiw` script`
@@ -60,6 +66,7 @@ $ sudo apt install \
 ```
 
 ### Build Prerequisites (Nix Build)
+
 This template can also be built using [Nix](https://nixos.org/download.html). You have
 the option to either use `$ nix-build`, which will produce `result/diplom.pdf`, or to
 use
