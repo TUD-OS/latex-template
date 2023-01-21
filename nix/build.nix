@@ -21,7 +21,7 @@ stdenvNoCC.mkDerivation {
   '';
 
   installPhase = ''
-    mkdir -p $out/share/latex-template
-    install -m 0644 diplom.pdf $out/share/latex-template/
+    mkdir -p $out
+    install -m 0644 diplom.pdf $out/
   '';
 }
