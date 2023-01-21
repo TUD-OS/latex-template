@@ -1,17 +1,14 @@
 [![Build](https://github.com/TUD-OS/latex-template/actions/workflows/build.yml/badge.svg)](https://github.com/TUD-OS/latex-template/actions/workflows/build.yml)
 
-Was ist das?
-============
+## Was ist das?
 
 Dieses Diplomarbeits-Latex-Template stellt ein Skelett für eine
 Diplomarbeit mit zugehöriger Make-Datei zur Verfügung.
 
-Checkout Submodules First
-===================
+## Checkout Submodules First
 In order to use the `$ make checkbiw` script please execute: `git submodule update --init --recursive`
 
-Build Prerequisites
-===================
+## Build Prerequisites (Regular Build)
 In case you don't want to install `texlive-full` to save disk space, the following packages are
 actually required: \
 ```shell
@@ -37,8 +34,7 @@ $ sudo apt install \
   latexmk
 ```
 
-So geht's los
-==============
+## So geht's los
 
 Als erstes solltest du in diplom.tex alle Vorkommen von Otto
 Mustermann, "Dein Titel" und "Dein Betreuer" ersetzen.
@@ -57,15 +53,13 @@ Das Template unterstützt sowohl englischen und deutschen Text. Englisch ist
 standardmäßig eingestellt. Für deutschen Text kann der letzte `\selectlanguage`
 Aufruf in `diplom.tex` einfach weggelassen werden.
 
-How To Build
-============
+## How To Build
 - `make`: regular build
 - `make watch`: Performs a watch task, i.e. automatically re-builds everything quickly on changes.
    If your PDF viewer supports automatic reload on file changes (such as the default PDF viewer in GNOME)
    you get a cool productive working environment.
 
-Grafiken einbinden
-==================
+## Grafiken einbinden
 
 Grafiken sollten im `images/` Verzeichnis abgelegt werden und im
 Makefile in die entsprechende `DOC_IMG_*` Variable eingetragen
@@ -74,8 +68,7 @@ unterstützt. PDF eignet sich für Vektorgrafiken und kann von den
 meisten Vektorgrafikprogrammen erzeugt werden (Inkscape, OpenOffice
 Draw, ...).
 
-Tipps
-=====
+## Tipps
 
 Diese Datei enthält im Moment ein Sammlung von Tipps und Tricks, sowie
 einige Hintergrundinformationen.
@@ -115,8 +108,7 @@ einige Hintergrundinformationen.
   vim, ... make sure to activate the setting or add the plugin for that into your IDE/editor
 
 
-spezielle Tipps von Frank
-=========================
+## spezielle Tipps von Frank
 
 - Ich verwende in der Vorlage KOMA-Script (`scrbook`), welches vor allem
   für den deutschsprachigen Raum gedacht ist. KOMA-Script kann auch
