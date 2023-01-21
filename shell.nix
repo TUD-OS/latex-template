@@ -1,4 +1,6 @@
-{ pkgs ? import <nixpkgs> { } }:
+{ sources ? import ./nix/sources.nix
+, pkgs ? import sources.nixpkgs { }
+}:
 
 let
   tex = import ./nix/tex-toolchain.nix { inherit pkgs; };
