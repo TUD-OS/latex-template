@@ -1,19 +1,6 @@
-{ stdenvNoCC, gitignoreSource, texlive }:
+{ stdenvNoCC, gitignoreSource, tex }:
 
-let
-  tex = texlive.combine {
-    inherit (texlive) scheme-small
-      biber
-      biblatex
-      csquotes
-      hyphenat
-      lastpage
-      latexmk
-      siunitx
-      todonotes
-      xpatch;
-  };
-in stdenvNoCC.mkDerivation {
+stdenvNoCC.mkDerivation {
   pname = "latex-template";
   version = "1.0.0";
 
