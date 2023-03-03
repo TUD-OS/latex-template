@@ -1,25 +1,13 @@
-{ stdenvNoCC, gitignoreSource, texlive }:
+{ stdenvNoCC, gitignoreSource, tex, gnumake }:
 
-let
-  tex = texlive.combine {
-    inherit (texlive) scheme-small
-      biber
-      biblatex
-      csquotes
-      hyphenat
-      lastpage
-      latexmk
-      siunitx
-      todonotes
-      xpatch;
-  };
-in stdenvNoCC.mkDerivation {
+stdenvNoCC.mkDerivation {
   pname = "latex-template";
   version = "1.0.0";
 
   src = gitignoreSource ../.;
 
   nativeBuildInputs = [
+    gnumake
     tex
   ];
 
@@ -27,13 +15,10 @@ in stdenvNoCC.mkDerivation {
 
   # Avoid luatex failing due to non-writable cache.
   TEXMFVAR = "/tmp/texlive/";
-
-  buildPhase = ''
-    make
-  '';
+  TEXTMFHOME = "/tmp/texlive/";
 
   installPhase = ''
-    mkdir -p $out/share/latex-template
-    install -m 0644 diplom.pdf $out/share/latex-template/
+    mkdir -p $out
+    install -m 0644 diplom.pdf $out/
   '';
 }

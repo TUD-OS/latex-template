@@ -1,11 +1,13 @@
+{ sources ? import ./sources.nix
+, pkgs ? import sources.nixpkgs { }
+}:
 let
-  sources = import ./sources.nix;
-  pkgs = import sources.nixpkgs {};
-
+  tex = import ./tex-toolchain.nix { inherit pkgs; };
   inherit (import sources."gitignore.nix" { inherit (pkgs) lib; }) gitignoreSource;
 in
 {
-  latex-template = pkgs.callPackage ./build.nix {
+  pdf = pkgs.callPackage ./build.nix {
     inherit gitignoreSource;
+    inherit tex;
   };
 }

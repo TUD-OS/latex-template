@@ -1,44 +1,16 @@
 [![Build](https://github.com/TUD-OS/latex-template/actions/workflows/build.yml/badge.svg)](https://github.com/TUD-OS/latex-template/actions/workflows/build.yml)
 
-Was ist das?
-============
+## Was ist das?
 
 Dieses Diplomarbeits-Latex-Template stellt ein Skelett für eine
 Diplomarbeit mit zugehöriger Make-Datei zur Verfügung.
 
-Checkout Submodules First
-===================
-In order to use the `$ make checkbiw` script please execute: `git submodule update --init --recursive`
+## Checkout Submodules First
 
-Build Prerequisites
-===================
-In case you don't want to install `texlive-full` to save disk space, the following packages are
-actually required: \
-```shell
-$ sudo apt install texlive-base \
-   texlive-lang-german \
-   texlive-lang-english \
-   `# for siunits` \
-   texlive-science \
-   texlive-luatex \
-   `# biber gets invoked by the utilities provided by bibtex-extra` \
-   biber \
-   texlive-bibtex-extra \
-   `# for csquotes` \
-   texlive-latex-extra
-```
+Um das `$ make checkbiw` ausführen zu können, musst du zuerst die
+Submodule auschecken: `git submodule update --init --recursive`
 
-Additionally, please install also:
-```shell
-$ sudo apt install \
-  `# for the `make checkbiw` script`
-  diction \
-  `# build system to build the latex project`
-  latexmk
-```
-
-So geht's los
-==============
+## So geht's los
 
 Als erstes solltest du in diplom.tex alle Vorkommen von Otto
 Mustermann, "Dein Titel" und "Dein Betreuer" ersetzen.
@@ -57,15 +29,54 @@ Das Template unterstützt sowohl englischen und deutschen Text. Englisch ist
 standardmäßig eingestellt. Für deutschen Text kann der letzte `\selectlanguage`
 Aufruf in `diplom.tex` einfach weggelassen werden.
 
-How To Build
-============
-- `make`: regular build
-- `make watch`: Performs a watch task, i.e. automatically re-builds everything quickly on changes.
+## How To Build
+
+- `$ make`: regular build that produces `diplom.pdf` and `yyyy-mm-dd_hhmmss DRAFT Diplomarbeit - Branch <branch>.pdf`.
+- `$ make watch`: Performs a watch task, i.e. automatically re-builds everything quickly on changes.
    If your PDF viewer supports automatic reload on file changes (such as the default PDF viewer in GNOME)
    you get a cool productive working environment.
 
-Grafiken einbinden
-==================
+### Build Prerequisites (Regular Build)
+
+In case you don't want to install `texlive-full` to save disk space, the following packages are
+actually required: \
+
+```shell
+$ sudo apt install texlive-base \
+   texlive-lang-german \
+   texlive-lang-english \
+   `# for siunits` \
+   texlive-science \
+   texlive-luatex \
+   `# biber gets invoked by the utilities provided by bibtex-extra` \
+   biber \
+   texlive-bibtex-extra \
+   `# for csquotes` \
+   texlive-latex-extra
+```
+
+Additionally, please install also:
+
+```shell
+$ sudo apt install \
+  `# for the `make checkbiw` script`
+  diction \
+  `# build system to build the latex project`
+  latexmk
+```
+
+### Build Prerequisites (Nix Build)
+
+This template can also be built using [Nix](https://nixos.org/download.html). You have
+the option to either use `$ nix-build`, which will produce `result/diplom.pdf`, or to
+use
+```bash
+$ nix-shell
+$ make clean
+$ make watch # (or just make)
+```
+
+## Grafiken einbinden
 
 Grafiken sollten im `images/` Verzeichnis abgelegt werden und im
 Makefile in die entsprechende `DOC_IMG_*` Variable eingetragen
@@ -74,8 +85,7 @@ unterstützt. PDF eignet sich für Vektorgrafiken und kann von den
 meisten Vektorgrafikprogrammen erzeugt werden (Inkscape, OpenOffice
 Draw, ...).
 
-Tipps
-=====
+## Tipps
 
 Diese Datei enthält im Moment ein Sammlung von Tipps und Tricks, sowie
 einige Hintergrundinformationen.
@@ -115,8 +125,7 @@ einige Hintergrundinformationen.
   vim, ... make sure to activate the setting or add the plugin for that into your IDE/editor
 
 
-spezielle Tipps von Frank
-=========================
+## spezielle Tipps von Frank
 
 - Ich verwende in der Vorlage KOMA-Script (`scrbook`), welches vor allem
   für den deutschsprachigen Raum gedacht ist. KOMA-Script kann auch
