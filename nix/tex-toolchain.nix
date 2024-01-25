@@ -5,6 +5,7 @@ texlive.combine {
     biber
     biblatex
     csquotes
+    detex # Only for Makefile convenience scripts; not for the actual build
     hyphenat
     lastpage
     latexmk

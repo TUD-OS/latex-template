@@ -80,8 +80,8 @@ CMD_COUNT_PAGES = pdfinfo $(DOC_PDF) | awk '/^Pages:/ {print $$2}'
 CMD_COUNT_WORDS = pdftotext $(DOC_PDF) $(DOC_PDF:.pdf=.pdf.txt) && cat $(DOC_PDF:.pdf=.pdf.txt) | grep -E '^\.+\ *$$' -v | wc -w
 
 stats: pdf
-	$(QUIET)echo "\e[1mThesis Stats:\e[0m"
-	$(QUIET)echo "  \e[1mdetexed sources and removed empty lines:\e[0m"
+	$(QUIET)echo -e "\e[1mThesis Stats:\e[0m"
+	$(QUIET)echo -e "  \e[1mdetexed sources and removed empty lines:\e[0m"
 	$(QUIET)echo "    lines:      $(shell detex $(DOC_TEX_ALL_SORTED) | sed '/^$$/d' | wc -l)"
 	$(QUIET)echo "    words:      $(shell detex $(DOC_TEX_ALL_SORTED) | sed '/^$$/d' | wc -w)"
 	$(QUIET)echo "    characters: $(shell detex $(DOC_TEX_ALL_SORTED) | sed '/^$$/d' | wc --chars)"
@@ -90,6 +90,6 @@ stats: pdf
 	$(QUIET)echo "                 version might contain additional words, such as 'in Figure 3.5 on the"
 	$(QUIET)echo "                 next page' or the bibliography."
 	$(QUIET)echo
-	$(QUIET)echo "  \e[1mCompiled PDF:\e[0m"
+	$(QUIET)echo -e "  \e[1mCompiled PDF:\e[0m"
 	$(QUIET)echo "    pages: $(shell $(CMD_COUNT_PAGES)) (in total)"
 	$(QUIET)echo "    words: $(shell $(CMD_COUNT_WORDS)) (roughly)"
