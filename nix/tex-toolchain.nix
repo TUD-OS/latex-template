@@ -10,5 +10,7 @@ texlive.combine {
     latexmk
     siunitx
     todonotes
-    xpatch;
+    xpatch
+    tudscr
+    newunicodechar;
 }
