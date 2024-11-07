@@ -56,31 +56,3 @@
 %   see: https://mirror.physik.tu-berlin.de/pub/CTAN/macros/latex/contrib/koma-script/doc/scrguide.pdf
 \addtokomafont{disposition}{\rmfamily}
 
-% ########################################################
-% With the fancyhdr package we can let all pages look more professional.
-% Each page (except for special ones such as chapters or the cover) will contain a
-% header that looks like this:
-%
-% Chapter %NUM%. %CHAPTER_NAME%                                                      3/10
-%
-% On even pages the page number is on the left, on odd pages the page number is on the right.
-%
-\pagestyle{fancy}
-% Reset all existing header styles
-\fancyhf{}
-
-% Even pages (Ex)
-% EL: even left: show page number
-\fancyhead[EL]{\thepage~/~\pageref{LastPage}}
-% ER: even right: show chapter
-\fancyhead[ER]{\leftmark}
-
-% Odd pages (Ox)
-% OL: odd left: show page number
-\fancyhead[OR]{\thepage~/~\pageref{LastPage}}
-% OR: odd right: show chapter
-\fancyhead[OL]{\rightmark}
-
-
-% Additionally page number always on the bottom
-% \fancyfoot[EC,OC]{\thepage}
