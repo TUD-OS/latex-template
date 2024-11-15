@@ -35,6 +35,7 @@ Aufruf in `diplom.tex` einfach weggelassen werden.
 - `$ make watch`: Performs a watch task, i.e. automatically re-builds everything quickly on changes.
    If your PDF viewer supports automatic reload on file changes (such as the default PDF viewer in GNOME)
    you get a cool productive working environment.
+- `$ make clean`: Clean all build artifacts (use in case you see unexpected errors)
 
 ### Build Prerequisites (Regular Build)
 
@@ -67,14 +68,12 @@ $ sudo apt install \
 
 ### Build Prerequisites (Nix Build)
 
-This template can also be built using [Nix](https://nixos.org/download.html). You have
-the option to either use `$ nix-build`, which will produce `result/diplom.pdf`, or to
-use
-```bash
-$ nix-shell
-$ make clean
-$ make watch # (or just make)
-```
+This template can also be built using [Nix](https://nixos.org/download.html).
+You have the following two options:
+- Build the full project in Nix: `$ nix build .`
+- Use the classic build flow with a toolchain obtained from Nix: `$ nix develop .`
+
+_Please ensure to have ``experimental-features = flakes nix-command` in your Nix config._
 
 ## Grafiken einbinden
 
