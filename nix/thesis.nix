@@ -20,6 +20,11 @@ stdenvNoCC.mkDerivation {
   TEXMFVAR = "/tmp/texlive/";
   TEXTMFHOME = "/tmp/texlive/";
 
+  preBuild = ''
+    # Ensure that \today doesn't show 1980-01-01
+    export SOURCE_DATE_EPOCH=$(date +%s)
+  '';
+
   installPhase = ''
     mkdir -p $out
     install -m 0644 diplom.pdf $out/
