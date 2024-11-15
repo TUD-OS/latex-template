@@ -1,7 +1,11 @@
+# Returns a tex toolchain with all packages needed for this thesis.
+# This is more lightweight than using `pkgs.texliveFull`.
+
 { pkgs }:
 with pkgs;
 texlive.combine {
-  inherit (texlive) scheme-small
+  inherit (texlive)
+    scheme-small
     biber
     biblatex
     csquotes
@@ -11,5 +15,6 @@ texlive.combine {
     latexmk
     siunitx
     todonotes
-    xpatch;
+    xpatch
+    ;
 }

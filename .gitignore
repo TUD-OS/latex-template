@@ -24,6 +24,8 @@ auto
 *.fls
 *.tdo
 
+.texlive*
+
 *.bcf
 diplom.pdf
 # comes from the "make stats" command
@@ -35,7 +37,8 @@ diplom.pdf.txt
 *.swp
 *.swo
 
-# Nix result links
+# Nix
+.direnv
 /result*
 
 # "make" produces PDFs in this format.
