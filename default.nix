@@ -1,1 +1,1 @@
-(import ./nix/release.nix {}).pdf
+(import ./nix/release.nix { }).pdf

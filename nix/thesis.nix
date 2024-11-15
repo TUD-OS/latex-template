@@ -1,10 +1,15 @@
-{ stdenvNoCC, gitignoreSource, tex, gnumake }:
+{
+  stdenvNoCC,
+  nix-gitignore,
+  tex,
+  gnumake,
+}:
 
 stdenvNoCC.mkDerivation {
   pname = "latex-template";
   version = "1.0.0";
 
-  src = gitignoreSource ../.;
+  src = nix-gitignore.gitignoreSource [ ] ../.;
 
   nativeBuildInputs = [
     gnumake
