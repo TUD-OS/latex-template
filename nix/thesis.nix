@@ -16,8 +16,6 @@ stdenvNoCC.mkDerivation {
     tex
   ];
 
-  doConfigure = false;
-
   # Avoid luatex failing due to non-writable cache.
   TEXMFVAR = "/tmp/texlive/";
   TEXTMFHOME = "/tmp/texlive/";
