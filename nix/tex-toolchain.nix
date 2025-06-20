@@ -5,14 +5,17 @@
 with pkgs;
 texlive.combine {
   inherit (texlive)
-    scheme-small
     biber
     biblatex
     csquotes
-    detex # Only for Makefile convenience scripts; not for the actual build
+    detex # Only for Makefile convenience scripts; not for the actual thesis
     hyphenat
     lastpage
     latexmk
+    scheme-small
+    scrhack
+    lscapeenhanced
+    setspaceenhanced
     siunitx
     todonotes
     xpatch
