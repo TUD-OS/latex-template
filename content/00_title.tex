@@ -2,27 +2,41 @@
 
 \begin{singlespace}
 
-    \subject{{\LARGE Diplomarbeit}}
+    % Depending on the thesis that you are writing, choose the proper setting here
+    \subject{diploma} % for Diploma Thesis
+    \graduation[Dipl.-Inf.]{Diplom-Informatiker*in}
+    % \subject{master} % for Master Thesis
+    % \graduation[M.Sc.]{Master of Science}
+    % \subject{bachelor} % for Bachelor Thesis
+    % \graduation[B.Sc.]{Bachelor of Science}
+    % \subject{evidence} % for Student Research Project (Großer Beleg)
 
     \title{Dein Titel}
 
-    \author{Otto Mustermann}
+    \author{%
+        Otto Mustermann%
+        \matriculationnumber{123456789}%
+        \dateofbirth{2.1.1990}%
+        \placeofbirth{Dresden}%
+    }
 
     \date{\today} % \printdate % if you defined date earlier
 
-    \publishers{Technische Universität Dresden\\
-    Fakultät Informatik\\
-    Institut für Systemarchitektur\\
-    Professur für Betriebssysteme\\
-        \begin{minipage}{\textwidth}%\\
-            \vspace{6cm}
-                {\normalsize }\begin{tabular}{ll}
-                                  Betreuender Hochschullehrer: &
-                                  Prof.\ Dr.-Ing.\ Horst Schirmeier\tabularnewline
-                                  Betreuender Mitarbeiter: &
-                                  Dipl.-Inf.\ Dein Betreuer\tabularnewline
-            \end{tabular} {\normalsize }
-        \end{minipage}}
+    % English version
+    \faculty{Faculty of Computer Science}
+    \institute{Institute of Systems Architecture}
+    \chair{Chair of Operating Systems}
+    % German version
+    %\faculty{Fakultät Informatik}
+    %\institute{Institut für Systemarchitektur}
+    %\chair{Professur für Betriebssysteme}
+
+    \professor{Prof.\ Dr.-Ing.\ Horst Schirmeier}
+    \supervisor{
+        Dipl.-Inf.\ Betreuer Eins%
+        \and%
+        M.Sc.\ Betreuer Zwei%
+    }
 
     \maketitle
 \end{singlespace}
