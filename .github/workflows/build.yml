@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: cachix/install-nix-action@v30
       - uses: DeterminateSystems/magic-nix-cache-action@main
-      - run: nix-build
+      - run: nix build .
       #   -s: test if this is a file and if it has a size.
       - run: test -s result/diplom.pdf
 
@@ -23,8 +23,8 @@ jobs:
       - uses: actions/checkout@v4
       - uses: cachix/install-nix-action@v30
       - uses: DeterminateSystems/magic-nix-cache-action@main
-      - run: nix-shell --run "make"
-      - run: nix-shell --run "make stats"
+      - run: nix develop -i --command bash -c "make"
+      - run: nix develop -i --command bash -c "make stats"
 
   # Builds with a regular toolchain via latexmk.
   regular_build:
