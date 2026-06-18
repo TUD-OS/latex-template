@@ -1,0 +1,12 @@
+% nasty hack to get the crappy new logo
+\makeatletter
+\newcommand\UseNewTudLogo{%
+\gdef\tud@mainlogo@set{%
+  \if@tud@mainlogo@set%
+    \tud@savelayerbox{main@black}{\includegraphics[keepaspectratio,width=\tud@dim@logowidth]{preamble/TUD-Logo_new.pdf}}%
+    \settoheight\tud@dim@mainlogoheight{\tud@uselayerbox{main@black}}%
+    \global\tud@dim@mainlogoheight=\tud@dim@mainlogoheight%
+    \global\@tud@mainlogo@setfalse%
+  \fi%
+}}
+\makeatother
