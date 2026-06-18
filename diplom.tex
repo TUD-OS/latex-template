@@ -14,7 +14,16 @@
 
 % You should select either american or british instead of english here:
 \usepackage[ngerman,english]{babel}
-\usepackage{fontspec}
+
+% load appropriate font processing packages (idea from iftex package)
+\ifx\csname pdftexversion\endcsname\relax
+  % luatex, xetex
+  \usepackage{fontspec}
+\else
+  % pdflatex
+  \usepackage[T1]{fontenc}
+  \usepackage{microtype}
+\fi
 
 \usepackage[citebordercolor={0.75 0.75 1},
 filebordercolor={0.75 0.75 1},
